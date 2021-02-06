@@ -1,5 +1,7 @@
 # paranormal-tourism
 
+[Live Deployment](https://paranormal-tourism.herokuapp.com/)
+
 Template .env
 ```
 DEFAULT_PORT='3001' // Set default port for server to listen on
