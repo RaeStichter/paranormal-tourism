@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mysql = require('mysql2');
 const sequelize = require('./config/connection');
-const routes = require('./routes');
+const routes = require('./controllers');
 
 // Module dependencies
 const db_config = require("./config/config");
