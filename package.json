@@ -19,5 +19,3 @@
   "author": "",
   "license": "ISC"
 }
-
-const test = if this is true ? set to this : otherwise set to this
