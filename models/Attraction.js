@@ -61,3 +61,4 @@ Attraction.init(
         modelName: 'attraction'
     }
 )
+module.exports = Attraction;
