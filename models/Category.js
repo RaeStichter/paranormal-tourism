@@ -17,6 +17,13 @@ Category.init(
             validate: {
                 len: [1]
             }
+        },
+        attraction_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'attraction',
+                key: 'id'
+            }
         }
     },
     {
