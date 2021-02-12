@@ -3,6 +3,7 @@ require('dotenv').config(); // for process.env.DEFAULT_PORT
 // Dependencies
 const express = require('express');
 const exphbs  = require('express-handlebars');
+const hbs = exphbs.create({});
 const bodyParser = require('body-parser');
 const path = require('path');
 const mysql = require('mysql2');
@@ -47,7 +48,7 @@ if (process.env.RESET_DB === "1")
 // Otherwise just start the server
 else
 {
-  sequelize.sync({ force: false }).then(() => {
+  sequelize.sync({ force: true }).then(() => {
     app.listen(PORT, () => console.log(`Server listening on port ${PORT}!`));
   });
 }
