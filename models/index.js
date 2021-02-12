@@ -1,52 +1,29 @@
-const User = require('./User');
-const Attraction = require('./Attraction');
-const Category = require('./Category');
-const Type = require('./Type');
-const Comment = require('./Comment');
-const Vote = require('./Vote')
+// import individual sequelize models
+const User = require('./User.js');
+const Attraction = require('./Attraction.js');
+const Category = require('./Category.js');
+const Type = require('./Type.js');
+const Comment = require('./Comment.js');
+const Vote = require('./Vote.js');
 
-// ==== attraction foreign keys ============
+User.hasMany(Attraction, { foreignKey: 'owner' });
+Attraction.belongsTo(User, { foreignKey: 'owner' });
 
-Attraction.hasMany(Category, {
-    foreignKey: 'attraction_id'
-});
+Category.hasMany(Attraction, { foreignKey: 'category_id' });
+Type.hasMany(Attraction, { foreignKey: 'type_id' });
 
-Category.belongsTo(Attraction, {
-    foreignKey: 'attraction_id'
-});
+Attraction.belongsTo(Category, { foreignKey: 'category_id' });
+Attraction.belongsTo(Type, { foreignKey: 'type_id' });
 
-Attraction.hasMany(Type, {
-    foreignKey: 'attraction_id'
-});
+Comment.belongsTo(User, { foreignKey: 'owner' });
+Comment.belongsTo(Attraction, { foreignKey: 'attraction_id' });
+User.hasMany(Comment, { foreignKey: 'owner' });
+Attraction.hasMany(Comment, { foreignKey: 'attraction_id' });
 
-Type.belongsTo(Attraction, {
-    foreignKey: 'attraction_id'
-});
+Vote.belongsTo(User, { foreignKey: 'owner' });
+Vote.belongsTo(Attraction, { foreignKey: 'attraction_id' });
+User.hasMany(Vote, { foreignKey: 'owner' });
+Attraction.hasMany(Vote, { foreignKey: 'attraction_id' });
 
-Attraction.hasMany(Comment, {
-    foreignKey: 'post_id'
-});
-
-Comment.belongsTo(Attraction, {
-    foreignKey: 'post_id'
-});
-
-//===== user foreign keys =============
-
-User.hasMany(Comment, {
-    foreignKey: 'user_id'
-});
-
-Comment.belongsTo(User, {
-    foreignKey: 'user_id'
-});
-
-User.hasMany(Vote, {
-    foreignKey: 'user_id'
-});
-
-Vote.belongsTo(User, {
-    foreignKey: 'user_id'
-});
-
-module.exports = { User, Attraction, Category, Type, Comment, Vote }
+// export sequelize models
+module.exports = { User, Attraction, Category, Type, Comment, Vote };
