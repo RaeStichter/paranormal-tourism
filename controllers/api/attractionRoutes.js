@@ -1,3 +1,12 @@
+// Dependencies
+// ------------
+// express router
+const router = require('express').Router();
+// sequelize models
+const { Attraction, Vote } = require('../../models');
+// express middleware
+const loggedIn = require('../../utils/checkLogin.js');
+
 // '/' GET - get list of all attractions and // TODO: their vote count
 // '/' POST - add a new attraction, verify user level > 2
 
