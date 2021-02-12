@@ -41,7 +41,7 @@ User.init(
   level:
   {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
     default: 0
   }
 },
