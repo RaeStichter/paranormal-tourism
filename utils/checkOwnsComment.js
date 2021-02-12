@@ -1,6 +1,6 @@
 // express middleware to verify that user is owner of attraction or admin
 // sequelize models
-const { User, Comment }
+const { User, Comment } = require('../models')
 
 // expects req.params.id to be comment id
 const ownsComment = (req, res, next) =>

@@ -118,4 +118,4 @@ router.delete('/:attraction_id/comments/:id', ownsComment, (req, res) =>
 
 // NOT MVP // TODO:
 // '/:attraction_id/votes'
-// '/:attraction_id/votes/:id's
+// '/:attraction_id/votes/:id'
