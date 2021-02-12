@@ -59,7 +59,7 @@ router.post('/login', (req,res) => {
         if(!dbUserData) {
             res.status(400).json({ message: 'User not found' })
             return;
-        } 
+        }
         const validPassword = dbUserData.checkPassword(req.body.passhash);
 
         if (!validPassword) {
