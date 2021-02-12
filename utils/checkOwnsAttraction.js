@@ -1,8 +1,8 @@
-// express middleware to verify that user is owner or admin
+// express middleware to verify that user is owner of attraction or admin
 // sequelize models
-// expects req.params.attaction_id
 const { User, Attraction }
 
+// expects req.params.attaction_id
 const ownsAttraction = (req, res, next) =>
 {
   if (!req.session.user_id) res.status(401).redirect('/login');
