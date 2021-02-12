@@ -19,7 +19,7 @@ Vote.init(
     allowNull: false,
     primaryKey: true
   },
-  user_id: // the ID of the User who made the vote
+  owner: // the ID of the User who made the vote
   {
     type: DataTypes.STRING,
     allowNull: false,
