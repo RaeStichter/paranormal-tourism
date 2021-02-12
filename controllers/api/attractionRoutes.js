@@ -119,3 +119,5 @@ router.delete('/:attraction_id/comments/:id', loggedIn, ownsComment, (req, res) 
 // NOT MVP // TODO:
 // '/:attraction_id/votes'
 // '/:attraction_id/votes/:id'
+
+module.exports = router;
