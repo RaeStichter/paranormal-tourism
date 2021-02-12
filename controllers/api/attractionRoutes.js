@@ -15,7 +15,7 @@ const uniqid = require('uniqid');
 // '/' POST - add a new attraction, verify user level > 0
 // expects { name: 'abc', lattitude: '<lattitude as string>', longitude: '<longitude as string>',
 // category_id: '3', type_id: '2', description: 'dasdfkasjfj adjasjd', images: 'imagePath' }
-router.post('/', atLeastLevelOne, (req, res) =>
+router.post('/', loggedIn, atLeastLevelOne, (req, res) =>
 {
   Attraction.create(
   {
@@ -41,7 +41,7 @@ router.post('/', atLeastLevelOne, (req, res) =>
 // '/:id' - PUT - update attraction with new info, verify owner or admin
 // expects { name: 'abc', lattitude: '<lattitude as string>', longitude: '<longitude as string>',
 // category_id: '3', type_id: '2', description: 'dasdfkasjfj adjasjd', images: 'imagePath' }
-router.put('/:attraction_id', ownsAttraction, (req, res) =>
+router.put('/:attraction_id', loggedIn, ownsAttraction, (req, res) =>
 {
   Attraction.update(
   {
@@ -65,7 +65,7 @@ router.put('/:attraction_id', ownsAttraction, (req, res) =>
 });
 
 // '/:id' - DELETE - delete an attraction, verify owner or admin
-router.delete('/:attraction_id', ownsAttraction, (req, res) =>
+router.delete('/:attraction_id', loggedIn, ownsAttraction, (req, res) =>
 {
   Attraction.destroy({ where: { id: req.params.attraction_id }})
   .then(dbAttractionData =>
@@ -100,7 +100,7 @@ router.post('/:attraction_id/comments', loggedIn, (req, res) =>
 })
 
 // '/:attraction_id/comments/:id' - Delete a comment, verify owner of comment or admin
-router.delete('/:attraction_id/comments/:id', ownsComment, (req, res) =>
+router.delete('/:attraction_id/comments/:id', loggedIn, ownsComment, (req, res) =>
 {
   Comment.destroy({ where: { id: req.params.id }})
   .then(dbCommentData =>

@@ -2,11 +2,9 @@
 // sequelize models
 const { User, Attraction } = require('../models');
 
-// expects req.params.attaction_id
+// expects req.params.attaction_id and loggedIn
 const ownsAttraction = (req, res, next) =>
 {
-  if (!req.session.user_id) res.status(401).redirect('/login');
-
   User.findOne({ where: { id: req.session.user_id }, attributes: ['level'] })
   .then(userData =>
   {

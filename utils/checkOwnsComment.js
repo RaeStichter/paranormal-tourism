@@ -2,12 +2,9 @@
 // sequelize models
 const { User, Comment } = require('../models')
 
-// expects req.params.id to be comment id
+// expects req.params.id to be comment id and user to be loggedIn
 const ownsComment = (req, res, next) =>
 {
-  // User isn't logged in -> redirect to login
-  if (!req.session.user_id) res.status(401).redirect('/login');
-
   // Find the user to check level
   User.findOne({ where: { id: req.session.user_id }, attributes: ['level'] })
   .then(userData =>
