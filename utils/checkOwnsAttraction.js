@@ -17,7 +17,7 @@ const ownsAttraction = (req, res, next) =>
       else res.status(401).json({ message: 'You are do not own this attraction and are not admin' });
     })
   })
-  .catch(err => { console.log('EXPRESS MIDDLEWARE ERROR', 'CHECKOWNSATTRACTION', err); res.status(500).json(err); }
+  .catch(err => { console.log('EXPRESS MIDDLEWARE ERROR', 'CHECKOWNSATTRACTION', err); res.status(500).json(err); });
 }
 
 module.exports = ownsAttraction;

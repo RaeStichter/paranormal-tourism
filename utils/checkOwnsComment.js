@@ -18,7 +18,7 @@ const ownsComment = (req, res, next) =>
       else res.status(401).json({ message: 'You are do not own this comment and are not admin' });
     })
   })
-  .catch(err => { console.log('EXPRESS MIDDLEWARE ERROR', 'CHECKOWNSCOMMENT', err); res.status(500).json(err); }
+  .catch(err => { console.log('EXPRESS MIDDLEWARE ERROR', 'CHECKOWNSCOMMENT', err); res.status(500).json(err); });
 }
 
 module.exports = ownsComment;

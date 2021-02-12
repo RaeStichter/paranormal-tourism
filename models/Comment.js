@@ -20,13 +20,13 @@ Comment.init(
   },
   owner:
   {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
     references: { model: 'user', key: 'id' }
   },
   attraction_id:
   {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
     references: { model: 'attraction', key: 'id' }
   }

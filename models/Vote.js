@@ -46,5 +46,8 @@ Vote.init(
   {},
   sequelize,
   underscored: true,
+  freezeTableName: true,
   modelName: 'vote'
 });
+
+module.exports = Vote;

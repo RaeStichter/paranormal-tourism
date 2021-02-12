@@ -19,7 +19,7 @@ router.post('/', loggedIn, atLeastLevelOne, (req, res) =>
 {
   Attraction.create(
   {
-    id: uniqid()
+    id: uniqid(),
     name: req.body.name,
     lattitude: req.body.lattitude,
     longitude: req.body.longitude,
@@ -88,10 +88,10 @@ router.post('/:attraction_id/comments', loggedIn, (req, res) =>
   Comment.create(
   {
     owner: req.session.user_id,
-    attraction_id: req.params.attraction_id
+    attraction_id: req.params.attraction_id,
     comment_text: req.body.comment_text,
   })
-  .then(dbCommentData => { res.status(200).redirect('/attractions/'+req.params.attraction_id); }
+  .then(dbCommentData => { res.status(200).redirect('/attractions/'+req.params.attraction_id); })
   .catch(err =>
   {
     console.log('/CONTROLLERS/API/ATTRACTIONROUTES ERROR', '/:attraction_id/comments POST', err);

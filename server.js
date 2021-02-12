@@ -48,7 +48,7 @@ if (process.env.RESET_DB === "1")
 // Otherwise just start the server
 else
 {
-  sequelize.sync({ force: true }).then(() => {
+  sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Server listening on port ${PORT}!`));
   });
 }
