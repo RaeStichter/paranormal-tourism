@@ -6,11 +6,12 @@ const Comment = require('./Comment');
 const Vote = require('./Vote')
 
 // ==== attraction foreign keys ============
+
 Attraction.hasMany(Category, {
     foreignKey: 'attraction_id'
 });
 
-Category.belongsToMany(Attraction, {
+Category.belongsTo(Attraction, {
     foreignKey: 'attraction_id'
 });
 
@@ -18,7 +19,7 @@ Attraction.hasMany(Type, {
     foreignKey: 'attraction_id'
 });
 
-Type.belongsToMany(Attraction, {
+Type.belongsTo(Attraction, {
     foreignKey: 'attraction_id'
 });
 
@@ -31,6 +32,7 @@ Comment.belongsTo(Attraction, {
 });
 
 //===== user foreign keys =============
+
 User.hasMany(Comment, {
     foreignKey: 'user_id'
 });
