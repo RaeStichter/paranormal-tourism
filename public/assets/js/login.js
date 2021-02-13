@@ -1,40 +1,16 @@
-async function signupFormHandler(event) {
-    event.preventDefault();
-    
-    const username = document.querySelector('#username-signup').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
 
-    if (username && email && password) {
-        const response = await fetch('/api/user', {
-            method: 'post',
-            body: JSON.stringify({
-                username,
-                password,
-                email,
-                
-            }),
-            headers: { 'Content-Type': 'application/json' }
-        });
-        if (response.ok) {
-            console.log('success');
-        } else {
-            alert(response.statusText);
-        }
-    }
-};
 
-function loginFormHandler(event) {
+async function loginFormHandler(event) {
     event.preventDefault();
 
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
+    const email = document.querySelector('#email-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
 
     if (email && password) {
         const response = await fetch('/api/user/login', {
             method: 'post',
             body: JSON.stringify({
-                username,
+                email,
                 password
             }),
             headers: { 'Content-Type': 'application/json' }
@@ -47,7 +23,4 @@ function loginFormHandler(event) {
     }
 }
 
-
-  
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);  

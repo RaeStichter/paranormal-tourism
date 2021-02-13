@@ -40,7 +40,7 @@ router.post('/', (req,res) => {
         id: uniqid(),
         username: req.body.username,
         email: req.body.email,
-        passhash: req.body.passhash
+        passhash: req.body.password
     })
     .then(dbUserData => res.json(dbUserData))
     .catch(err => {
