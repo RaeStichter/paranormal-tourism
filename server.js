@@ -3,6 +3,7 @@ require('dotenv').config(); // for process.env.DEFAULT_PORT
 // Dependencies
 const express = require('express');
 const exphbs  = require('express-handlebars');
+const hbs = exphbs.create({});
 const bodyParser = require('body-parser');
 const path = require('path');
 const mysql = require('mysql2');
