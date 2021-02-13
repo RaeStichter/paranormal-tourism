@@ -34,11 +34,6 @@ Attraction.init(
     type: DataTypes.INTEGER,
     references: { model: 'category', key: 'id' }
   },
-  type_id:
-  {
-    type: DataTypes.INTEGER,
-    references: { model: 'type', key: 'id' }
-  },
   description:
   {
     type: DataTypes.TEXT,

@@ -3,7 +3,7 @@
 // express router
 const router = require('express').Router();
 // sequelize models
-const { Attraction, Comment } = require('../../models');
+const { Attraction, Comment, AttractionType } = require('../../models');
 // express middleware
 const loggedIn = require('../../utils/checkLogin.js');
 const atLeastLevelOne = require('../../utils/checkAtLeastLevelOne.js');
@@ -14,7 +14,7 @@ const uniqid = require('uniqid');
 
 // '/' POST - add a new attraction, verify user level > 0
 // expects { name: 'abc', lattitude: '<lattitude as string>', longitude: '<longitude as string>',
-// category_id: '3', type_id: '2', description: 'dasdfkasjfj adjasjd', images: 'imagePath' }
+// category_id: '3', type_ids: '[1, 2, 3]', description: 'dasdfkasjfj adjasjd', images: 'imagePath' }
 router.post('/', loggedIn, atLeastLevelOne, (req, res) =>
 {
   Attraction.create(
@@ -24,13 +24,31 @@ router.post('/', loggedIn, atLeastLevelOne, (req, res) =>
     lattitude: req.body.lattitude,
     longitude: req.body.longitude,
     category_id: req.body.category_id,
-    type_id: req.body.type_id,
     description: req.body.description,
     imagePath: req.body.imagePath,
     owner: req.session.user_id
   })
   // redirect client to new attraction page
-  .then(dbPostData => { res.status(200).redirect('/attractions/'+dbPostData.id) })
+  .then(dbAttractionData =>
+  {
+    // link new attraction to types
+    if (req.body.type_ids.length)
+    {
+      const attractionTypeIdArr = req.body.type_ids.map((type_id) =>
+      {
+        return
+        {
+          attraction_id: dbAttractionData.id,
+          type_id
+        };
+      });
+
+      AttractionType.bulkCreate(attractionTypeIdArr);
+      res.status(200).redirect('/attractions/'+dbAttractionData.id);
+    }
+
+    res.status(400).json({ message: 'You didn\'t include types', attraction: JSON.stringify(dbAttractionData) });
+  })
   .catch(err =>
   {
     console.log('/CONTROLLERS/API/ATTRACTIONROUTES ERROR', '/ POST', err);
