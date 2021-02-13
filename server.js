@@ -9,6 +9,19 @@ const path = require('path');
 const mysql = require('mysql2');
 const sequelize = require('./config/connection');
 const routes = require('./controllers');
+//import for session
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sess = {
+  secret: process.env.SECRET,
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
 
 // Create an instance of the express app.
 const app = express();
@@ -23,6 +36,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Host static Asset files so Public css and js files can be retrieved by client
 app.use(express.static(path.join(__dirname, '/public/assets')));
 
+// create a session
+app.use(session(sess));
 
 // Set Handlebars as the default templating engine
 app.engine("handlebars", exphbs({ deafaultLayout: "main" }));
