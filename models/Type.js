@@ -17,13 +17,6 @@ Type.init(
             validate: {
                 len: [2]
             }
-        },
-        attraction_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'attraction',
-                key: 'id'
-            }
         }
     },
     {
