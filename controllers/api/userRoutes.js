@@ -93,11 +93,11 @@ router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             console.log('session ended')
-            res.status(204).end;
+            res.status(204).end();
         })
     }
     else {
-        res.status(404).end;
+        res.status(404).end();
     }
 });
 
