@@ -44,15 +44,15 @@ router.post('/', loggedIn, atLeastLevelOne, (req, res) =>
       });
 
       AttractionType.bulkCreate(attractionTypeIdArr);
-      res.status(200).redirect('/attractions/'+dbAttractionData.id);
+      return res.status(200).redirect('/attractions/'+dbAttractionData.id);
     }
 
-    res.status(400).json({ message: 'You didn\'t include types', attraction: JSON.stringify(dbAttractionData) });
+    return res.status(400).json({ message: 'You didn\'t include types', attraction: JSON.stringify(dbAttractionData) });
   })
   .catch(err =>
   {
     console.log('/CONTROLLERS/API/ATTRACTIONROUTES ERROR', '/ POST', err);
-    res.status(500).json(err);
+    return res.status(500).json(err);
   });
 });
 
@@ -78,7 +78,7 @@ router.put('/:attraction_id', loggedIn, ownsAttraction, (req, res) =>
   .catch(err =>
   {
     console.log('/CONTROLLERS/API/ATTRACTIONROUTES ERROR', '/:attraction_id PUT', err);
-    res.status(500).json(err);
+    return res.status(500).json(err);
   })
 });
 
@@ -88,14 +88,14 @@ router.delete('/:attraction_id', loggedIn, ownsAttraction, (req, res) =>
   Attraction.destroy({ where: { id: req.params.attraction_id }})
   .then(dbAttractionData =>
   {
-    if (!dbAttractionData) { res.status(404).json({ message: 'No attraction found with this id' }); return; }
+    if (!dbAttractionData) { return res.status(404).json({ message: 'No attraction found with this id' }); }
 
-    res.status(200).redirect('/'); // Attraction deleted, back to main page
+    return res.status(200).redirect('/'); // Attraction deleted, back to main page
   })
   .catch(err =>
   {
     console.log('/CONTROLLERS/API/ATTRACTIONROUTES ERROR', '/:attraction_id DELETE', err);
-    res.status(500).json(err);
+    return res.status(500).json(err);
   })
 })
 
@@ -113,7 +113,7 @@ router.post('/:attraction_id/comments', loggedIn, (req, res) =>
   .catch(err =>
   {
     console.log('/CONTROLLERS/API/ATTRACTIONROUTES ERROR', '/:attraction_id/comments POST', err);
-    res.status(500).json(err);
+    return res.status(500).json(err);
   });
 })
 
@@ -123,14 +123,14 @@ router.delete('/:attraction_id/comments/:id', loggedIn, ownsComment, (req, res) 
   Comment.destroy({ where: { id: req.params.id }})
   .then(dbCommentData =>
   {
-    if (!dbCommentData) { res.status(404).json({ message: 'No comment found with this id' }); return; }
+    if (!dbCommentData) { return res.status(404).json({ message: 'No comment found with this id' }); }
 
-    res.status(200).redirect('/attractions/'+req.params.attraction_id); // Comment deleted, refresh attraction page
+    return res.status(200).redirect('/attractions/'+req.params.attraction_id); // Comment deleted, refresh attraction page
   })
   .catch(err =>
   {
     console.log('/CONTROLLERS/API/ATTRACTIONROUTES ERROR', '/:attraction_id/comments/:id DELETE', err);
-    res.status(500).json(err);
+    return res.status(500).json(err);
   })
 })
 
