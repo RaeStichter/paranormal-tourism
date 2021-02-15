@@ -26,6 +26,10 @@ router.get('/', (req, res) => {
       {
         model: Category,
         attributes: ['id', 'name']
+      },
+      {
+        model: Type,
+        attributes: ['id', 'name']
       }
     ]
   })

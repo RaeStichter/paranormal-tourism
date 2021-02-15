@@ -4,48 +4,56 @@
 
     <form class="search-attraction-form">
         <div>
+            <label for="attraction-category">Category:</label>
+            <select name="attraction-category" id="attraction-category">
+                <option value=" "> </option>
+                <option value="Aliens">Aliens</option>
+                <option value="Cryptids">Cryptids</option>
+                <option value="Ghosts">Ghosts</option>
+            </select>
+        </div>
+        <div>
+            <label for="attraction-type">Type:</label>
+            <select name="attraction-type" id="attraction-type">
+                <option value=" "> </option>
+                <option value="Museum">Museum</option>
+                <option value="Cemetary">Cemetary</option>
+                <option value="Historical Site">Historical Site</option>
+                <option value="Sighting Location">Sighting Location</option>
+                <option value="Asylum">Asylum</option>
+                <option value="Prison">Prison</option>
+                <option value="Walking Tour">Walking Tour</option>
+            </select>
+        </div>
+        <div>
             <label for="attraction-location">Near</label>
             <input type="text" id="attraction-location" name="attraction-location" placeholder="Enter a location..."/>
         </div>
         <button type="submit" class="btn">Search</button>
     </form>
 
-    <div id="map"></div>
+    {{!-- not working yet --}}
+    <div id="map" style="height: 500px"></div>
     
+    <h2>Not sure what to search for? Check out one of these attractions:</h2>
+
     {{!-- Pull attractions --}}
-    <ol class="attraction-list">
+    <ul class="attraction-list">
         {{#each attractions as |attraction|}}
         <li>
             <article class="attraction">
             <div class="title">
-                {{attraction.name}}
-            </div>
-            <div>
-                {{category.name}}
-            </div>
-            <div>
-                {{type.name}}
+                <a href="/attractions/{{atraction.id}}">{{attraction.name}}</a>
             </div>
             </article>
         </li>
         {{/each}}
-    </ol>
+    </ul>
 
-    {{!-- Pull categories
-    <ol class="category-list">
-        {{#each categories as |category|}}
-        <li>
-            <article class="category">
-            <div class="title">
-                {{category.name}}
-            </div>
-            </article>
-        </li>
-        {{/each}}
-    </ol> --}}
 </section>
-<script src="/public/assets/js/map-init.js"></script>
 
+{{!-- Basic map funcationality, will add more later --}}
+<script src="/js/map-init.js"></script>
 
-{{!-- <script src="/public/assets/js/map-init.js"></script>
-<script src="/public/assets/js/search-attractions.js"></script> --}}
+{{!-- Search not working yet --}}
+<script src="/js/search-attractions.js"></script>

@@ -1,25 +1,24 @@
 async function SearchFormHandler(event) {
     event.preventDefault();
-  
-    const location = document.querySelector('input[name="attraction-location"]').value.trim();
-    // const id = window.location.toString().split('/')[
-    //   window.location.toString().split('/').length - 1
-    // ];
-    const response = await fetch(`/api/attractions`, {
-      method: 'GET',
-      body: JSON.stringify({
-        title
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  
-    if (response.ok) {
-        // displays all of the attractions
-        document.location.reload();
-    } else {
-        alert(response.statusText);
+    console.log("function was reached");
+    const location_text = document.querySelector('input[name="attraction-location"]').value.trim();
+    
+    if (location_text) {
+        const response = await fetch('/html/index', {
+          method: 'GET',
+          body: JSON.stringify({
+            location_text
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+    
+        if (response.ok) {
+            document.location.replace('/attractions');
+        } else {
+          alert(response.statusText);
+        }
     }
 }
   
