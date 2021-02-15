@@ -1,16 +1,51 @@
 <section>
-    <H1>Find your next adventure!</H1>
+    <h1>Find your next adventure!</h1>
     <h2>What are you looking to do?</h2>
-    {{!-- <ul>
-        {{#each category as |category|}}
+
+    <form class="search-attraction-form">
+        <div>
+            <label for="attraction-location">Near</label>
+            <input type="text" id="attraction-location" name="attraction-location" placeholder="Enter a location..."/>
+        </div>
+        <button type="submit" class="btn">Search</button>
+    </form>
+
+    <div id="map"></div>
+    
+    {{!-- Pull attractions --}}
+    <ol class="attraction-list">
+        {{#each attractions as |attraction|}}
         <li>
-            <p>
-                {{category.id}}
-            </p>
-            <p>
+            <article class="attraction">
+            <div class="title">
+                {{attraction.name}}
+            </div>
+            <div>
                 {{category.name}}
-            </p>
+            </div>
+            <div>
+                {{type.name}}
+            </div>
+            </article>
         </li>
         {{/each}}
-    </ul> --}}
+    </ol>
+
+    {{!-- Pull categories
+    <ol class="category-list">
+        {{#each categories as |category|}}
+        <li>
+            <article class="category">
+            <div class="title">
+                {{category.name}}
+            </div>
+            </article>
+        </li>
+        {{/each}}
+    </ol> --}}
 </section>
+<script src="/public/assets/js/map-init.js"></script>
+
+
+{{!-- <script src="/public/assets/js/map-init.js"></script>
+<script src="/public/assets/js/search-attractions.js"></script> --}}

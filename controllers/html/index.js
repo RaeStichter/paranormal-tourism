@@ -9,37 +9,57 @@ const { Attraction, Category, Comment, Type, User, Vote } = require('../../model
 // });
 // HTML routes here // TODO: 
 
-// ROUTE used for creating the homepage index.html
+// ROUTE used for pulling all attraction data.  Currently displaying
 router.get('/', (req, res) => {
-  // Category.findAll({
-  //   attributes: [
-  //     'id',
-  //     'name'
-  //   ],
-  // })
-  //   .then(dbData => {
-  //     const category = dbData.map(category => category.get({ plain: true }));
-
-  //     res.render('index', {
-  //       category
-  //     });
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //     res.status(500).json(err);
-  //   });
-  //res.render('index');
+  Attraction.findAll({
+    attributes:[
+      'id',
+      'name',
+      'latitude',
+      'longitude',
+      'category_id',
+      'description',
+      'imagePath',
+      'owner'
+    ],
+    include: [
+      {
+        model: Category,
+        attributes: ['id', 'name']
+      }
+    ]
+  })
+    .then(dbAttractionData => {
+      const attractions = dbAttractionData.map(attraction => attraction.get({ plain: true}));
+      res.render('index', {
+        attractions
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
+  
+// ROUTE used for pulling all categories
+// router.get('/', (req, res) => {
+//   Category.findAll({
+//     attributes:[
+//       'id',
+//       'name'
+//     ]
+//   })
+//     .then(dbCategoryData => {
+//       const categories = dbCategoryData.map(category => category.get({ plain: true}));
 
-
-
-// router.get('/', (req,res) => {
-//   Category.findAll()
-//   .then(dbUserData => res.json(dbUserData))
-//   .catch(err => {
+//       res.render('index', {
+//         categories
+//       });
+//     })
+//     .catch(err => {
 //       console.log(err);
 //       res.status(500).json(err);
-//   })
+//     });
 // });
 
 // ROUTE used for /account/create
