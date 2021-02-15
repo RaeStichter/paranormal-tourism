@@ -7,6 +7,24 @@ INSERT INTO user (id, username, email, passhash, level, created_at, updated_at) 
   (2),
   ('2021-02-12 05:55:00.000'),
   ('2021-02-12 05:55:00.000')
+),
+(
+  ('admin_Giamo'),
+  ('Giamo'),
+  ('Giamo@admin.com'),
+  ('$2y$10$t/GtNX0hDkkYeW4oacEzZ.i/BW0sQ0hQPIcuUZ1JSu./rYrxBhCT.'),
+  (2),
+  ('2021-02-12 05:55:00.000'),
+  ('2021-02-12 05:55:00.000')
+),
+(
+  ('admin_Rae'),
+  ('Rae'),
+  ('Rae@admin.com'),
+  ('$2y$12$PPZJf0y5GoBvEgYWQnns0Olf2BVGAfd.bNoOfWPKdivxPgcewgRpa'),
+  (2),
+  ('2021-02-12 05:55:00.000'),
+  ('2021-02-12 05:55:00.000')
 );
 
 INSERT INTO category (id, name, created_at, updated_at) VALUES
