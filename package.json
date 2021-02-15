@@ -13,6 +13,7 @@
     "express-session": "^1.17.1",
     "express-session-sequelize": "^2.3.0",
     "mysql2": "^2.2.5",
+    "node": "^15.8.0",
     "sequelize": "^6.5.0",
     "uniqid": "^5.2.0"
   },
