@@ -41,7 +41,7 @@ INSERT INTO type (id, name, created_at, updated_at) VALUES
 (6, 'Prison', '2021-02-12 05:55:00.000', '2021-02-12 05:55:00.000'),
 (7, 'Walking Tour', '2021-02-12 05:55:00.000', '2021-02-12 05:55:00.000');
 
-INSERT INTO attraction (id, name, lattitude, longitude, category_id, description, image_path, owner, created_at, updated_at) VALUES
+INSERT INTO attraction (id, name, latitude, longitude, category_id, description, image_path, owner, created_at, updated_at) VALUES
 ('1', 'spooky place 1', '39.952414', '-75.146301', 3, 'cool description of spooky place 1', '../public/assets/images/cartoon_ghost.png', 'admin', '2021-02-12 05:55:00.000', '2021-02-12 05:55:00.000'),
 ('2', 'spooky place 2', '38.952414', '-74.146301', 2, 'cool description of spooky place 2', '../public/assets/images/cartoon_ghost.png', 'admin', '2021-02-12 05:55:00.000', '2021-02-12 05:55:00.000'),
 ('3', 'spooky place 3', '38.952414', '-74.146301', 1, 'cool description of spooky place 3', '../public/assets/images/cartoon_ghost.png', 'admin', '2021-02-12 05:55:00.000', '2021-02-12 05:55:00.000'),
