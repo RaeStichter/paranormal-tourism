@@ -31,4 +31,4 @@ Type.belongsToMany(Attraction, { through: AttractionType, as: 'attractions_with_
 
 
 // export sequelize models
-module.exports = { User, Attraction, Category, Type, Comment, Vote };
+module.exports = { User, Attraction, Category, Type, Comment, Vote, AttractionType };
