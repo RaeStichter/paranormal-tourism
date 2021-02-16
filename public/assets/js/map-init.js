@@ -1,3 +1,31 @@
+// get the lat and long
+const loc = window.location.toString().split('/')[
+  window.location.toString().split('/').length - 1
+];
+
+const lat = loc.toString().split(',') [
+  loc.toString().split(',').length - 2
+];
+
+const lng = loc.toString().split(',') [
+  loc.toString().split(',').length - 1
+];
+
+var latitude = parseFloat(lat);
+var longitude = parseFloat(lng);
+// const loct = window.location.toString().split(',')[
+//   window.location.toString().split(',').length - 2
+// ];
+
+// const lat = loc.toString().split(',')[
+//   loc.toString().split(',').length - 1
+// ];
+console.log(loc);
+console.log(latitude);
+console.log(longitude);
+// console.log(latitude);
+// console.log(longitude);
+// console.log(lat);
 // Create the script tag, set the appropriate attributes
 var script = document.createElement('script');
 
@@ -7,8 +35,8 @@ script.async = true;
 // Attach your callback function to the `window` object
 window.initMap = function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 3.8, 
-      center: { lat: 39.829169, lng: -98.579908 }, //39.82916983397753, -98.57990885339983 geographic center of USA
+      zoom: 7, 
+      center: { lat: latitude, lng: longitude }, //39.82916983397753, -98.57990885339983 geographic center of USA
       mapTypeId: "roadmap",
 });
 };
