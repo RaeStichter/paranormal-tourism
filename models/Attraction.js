@@ -17,7 +17,7 @@ Attraction.init(
     allowNull: false,
     validate: { len: [1] }
   },
-  latitude:
+  lattitude:
   {
     type: DataTypes.STRING,
     allowNull: false,
@@ -52,10 +52,10 @@ Attraction.init(
   }
 },
 {
-    sequelize,
-    underscored: true,
-    freezeTableName: true,
-    modelName: 'attraction'
+  sequelize,
+  underscored: true,
+  freezeTableName: true,
+  modelName: 'attraction'
 });
 
 module.exports = Attraction;

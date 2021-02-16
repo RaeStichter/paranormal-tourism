@@ -70,7 +70,6 @@ router.post('/login', (req,res) =>
   User.findOne({ where: { email: req.body.email } })
   .then(dbUserData =>
   {
-    console.log(req.body);
     if(!dbUserData) return res.status(400).json({ message: 'User not found' });
 
     const validPassword = dbUserData.checkPassword(req.body.passhash);

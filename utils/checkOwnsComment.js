@@ -9,16 +9,16 @@ const ownsComment = (req, res, next) =>
   User.findOne({ where: { id: req.session.user_id }, attributes: ['level'] })
   .then(userData =>
   {
-    if (userData.level === 2) next(); // User is admin, next
+    if (userData.level == 2) return next(); // User is admin, next
 
     Comment.findOne({ where: { id: req.params.id }, attributes: ['owner'] })
     .then(commentData =>
     {
-      if (commentData.owner === req.session.user_id) next(); // User owns comment
-      else res.status(401).json({ message: 'You are do not own this comment and are not admin' });
+      if (commentData.owner === req.session.user_id) return next(); // User owns comment
+      else return res.status(401).json({ message: 'You do not own this comment and are not admin' });
     })
   })
-  .catch(err => { console.log('EXPRESS MIDDLEWARE ERROR', 'CHECKOWNSCOMMENT', err); res.status(500).json(err); });
+  .catch(err => { console.log('EXPRESS MIDDLEWARE ERROR', 'CHECKOWNSCOMMENT', err); return res.status(500).json(err); });
 }
 
 module.exports = ownsComment;

@@ -14,7 +14,7 @@ const uniqid = require('uniqid');
 
 // '/' POST - add a new attraction, verify user level > 0
 // expects { name: 'abc', lattitude: '<lattitude as string>', longitude: '<longitude as string>',
-// category_id: '3', type_ids: '[1, 2, 3]', description: 'dasdfkasjfj adjasjd', images: 'imagePath' }
+// category_id: '3', type_ids: '1,2,3', description: 'dasdfkasjfj adjasjd', images: 'imagePath' }
 router.post('/', loggedIn, atLeastLevelOne, (req, res) =>
 {
   Attraction.create(
@@ -34,17 +34,15 @@ router.post('/', loggedIn, atLeastLevelOne, (req, res) =>
     // link new attraction to types
     if (req.body.type_ids.length)
     {
-      const attractionTypeIdArr = req.body.type_ids.map((type_id) =>
+      let arr = req.body.type_ids.split(',')
+
+      const attractionTypeIdArr = arr.map((type_id) =>
       {
-        return
-        {
-          attraction_id: dbAttractionData.id,
-          type_id
-        };
+        return { attraction_id: dbAttractionData.id, type_id };
       });
 
-      AttractionType.bulkCreate(attractionTypeIdArr);
-      return res.status(200).redirect('/attractions/'+dbAttractionData.id);
+      let attTypes = AttractionType.bulkCreate(attractionTypeIdArr);
+      return res.status(200).json(dbAttractionData);
     }
 
     return res.status(400).json({ message: 'You didn\'t include types', attraction: JSON.stringify(dbAttractionData) });
@@ -67,14 +65,17 @@ router.put('/:attraction_id', loggedIn, ownsAttraction, (req, res) =>
     lattitude: req.body.lattitude,
     longitude: req.body.longitude,
     category_id: req.body.category_id,
-    type_id: req.body.type_id,
     description: req.body.description,
     imagePath: req.body.imagePath
   },
   {
     where: { id: req.params.attraction_id }
   })
-  .then(updatedAttactionData => { res.status(200).redirect('/attractions/'+req.params.attraction_id); })
+  .then(updatedAttractionData =>
+  {
+    return res.status(200).json(updatedAttractionData);
+    // TODO: delete old AttractionTypes and create new ones
+  })
   .catch(err =>
   {
     console.log('/CONTROLLERS/API/ATTRACTIONROUTES ERROR', '/:attraction_id PUT', err);
@@ -90,7 +91,9 @@ router.delete('/:attraction_id', loggedIn, ownsAttraction, (req, res) =>
   {
     if (!dbAttractionData) { return res.status(404).json({ message: 'No attraction found with this id' }); }
 
-    return res.status(200).redirect('/'); // Attraction deleted, back to main page
+    // // TODO: delete AttractionTypes where attraction_id = req.params.attraction_id
+
+    return res.status(200).json({ message: 'Deleted attraction' });
   })
   .catch(err =>
   {
@@ -109,7 +112,7 @@ router.post('/:attraction_id/comments', loggedIn, (req, res) =>
     attraction_id: req.params.attraction_id,
     comment_text: req.body.comment_text,
   })
-  .then(dbCommentData => { res.status(200).redirect('/attractions/'+req.params.attraction_id); })
+  .then(dbCommentData => { return res.status(200).json(dbCommentData); })
   .catch(err =>
   {
     console.log('/CONTROLLERS/API/ATTRACTIONROUTES ERROR', '/:attraction_id/comments POST', err);
@@ -125,7 +128,7 @@ router.delete('/:attraction_id/comments/:id', loggedIn, ownsComment, (req, res) 
   {
     if (!dbCommentData) { return res.status(404).json({ message: 'No comment found with this id' }); }
 
-    return res.status(200).redirect('/attractions/'+req.params.attraction_id); // Comment deleted, refresh attraction page
+    return res.status(200).json(dbCommentData);
   })
   .catch(err =>
   {
