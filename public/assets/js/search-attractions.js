@@ -4,6 +4,10 @@ async function SearchFormHandler(event) {
   const location_text = document.querySelector('input[name="attraction-location"]').value.trim();
   console.log(location_text);
 //-----above was working with the document.event at the bottom
+// var script = document.createElement('script');
+
+// script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDdrgmTD2DFkXNvcS0u0aTjPwtPq_81FiE&callback=initMap';
+// script.async = true;
 
 
 // function initMap() {

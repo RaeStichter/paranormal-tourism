@@ -27,6 +27,9 @@ console.log(longitude);
 // console.log(longitude);
 // console.log(lat);
 // Create the script tag, set the appropriate attributes
+//function attractionMap(latitude, longitude) {
+
+
 var script = document.createElement('script');
 
 script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDdrgmTD2DFkXNvcS0u0aTjPwtPq_81FiE&callback=initMap';
@@ -43,6 +46,6 @@ window.initMap = function initMap() {
 
 // Append the 'script' element to 'head'
 document.head.appendChild(script);
-
+//}
 // loads map as the page loads
 let map;
