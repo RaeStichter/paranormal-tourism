@@ -1,3 +1,21 @@
 <section>
-    <H1>ATTRACTIONS</H1>
+    <H1>All Attractions</H1>
+
+    {{!-- not working yet --}}
+    <div id="map" style="height: 500px"></div>
+
+    {{!-- Pull attractions --}}
+    <ul class="attraction-list">
+        {{#each attractions as |attraction|}}
+        <li>
+            <article class="attraction">
+            <div class="title">
+                <a href="/attractions/{{atraction.id}}">{{attraction.name}}</a>
+            </div>
+            </article>
+        </li>
+        {{/each}}
+    </ul>
 </section>
+
+<script src="/js/map-init.js"></script>

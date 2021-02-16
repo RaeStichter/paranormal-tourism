@@ -52,10 +52,10 @@ Attraction.init(
   }
 },
 {
-    sequelize,
-    underscored: true,
-    freezeTableName: true,
-    modelName: 'attraction'
+  sequelize,
+  underscored: true,
+  freezeTableName: true,
+  modelName: 'attraction'
 });
 
 module.exports = Attraction;
