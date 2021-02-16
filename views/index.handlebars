@@ -27,14 +27,14 @@
         </div>
         <div>
             <label for="attraction-location">Near</label>
-            <input type="text" id="attraction-location" name="attraction-location" placeholder="Enter a location..."/>
+            <input type="text" id="attraction-location" name="attraction-location" placeholder="Enter a location..." />
         </div>
         <button type="submit" class="btn">Search</button>
     </form>
 
     {{!-- not working yet --}}
     <div id="map" style="height: 500px"></div>
-    
+
     <h2>Not sure what to search for? Check out one of these attractions:</h2>
 
     {{!-- Pull attractions --}}
@@ -42,9 +42,9 @@
         {{#each attractions as |attraction|}}
         <li>
             <article class="attraction">
-            <div class="title">
-                <a href="/attractions/{{atraction.id}}">{{attraction.name}}</a>
-            </div>
+                <div id="title" class="column is-two-thirds is-3">
+                    <a href="/attractions/{{atraction.id}}">{{attraction.name}}</a>
+                </div>
             </article>
         </li>
         {{/each}}

@@ -1,50 +1,59 @@
-const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const { Attraction, Category, Comment, Type, User, Vote } = require('../../models');
+const router = require("express").Router();
+const sequelize = require("../../config/connection");
+const {
+  Attraction,
+  Category,
+  Comment,
+  Type,
+  User,
+  Vote,
+} = require("../../models");
 
 // <server>/ - Default URL, should serve index.html // TODO:
 // router.get('', (req, res) =>
 // {
 //   res.status(200).json({ message: 'is this working????!' });
 // });
-// HTML routes here // TODO: 
+// HTML routes here // TODO:
 
 // ROUTE used for pulling all attraction data.  Currently displaying
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   Attraction.findAll({
-    attributes:[
-      'id',
-      'name',
-      'latitude',
-      'longitude',
-      'category_id',
-      'description',
-      'imagePath',
-      'owner'
+    attributes: [
+      "id",
+      "name",
+      "latitude",
+      "longitude",
+      "category_id",
+      "description",
+      "imagePath",
+      "owner",
     ],
     include: [
       {
         model: Category,
-        attributes: ['id', 'name']
+        attributes: ["id", "name"],
       },
       {
         model: Type,
-        attributes: ['id', 'name']
-      }
-    ]
+        attributes: ["id", "name"],
+      },
+    ],
   })
-    .then(dbAttractionData => {
-      const attractions = dbAttractionData.map(attraction => attraction.get({ plain: true}));
-      res.render('index', {
-        attractions
+    .then((dbAttractionData) => {
+      const attractions = dbAttractionData.map((attraction) =>
+        attraction.get({ plain: true })
+      );
+      res.render("index", {
+        attractions,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-  
+
 // ROUTE used for pulling all categories
 // router.get('/', (req, res) => {
 //   Category.findAll({
@@ -67,22 +76,21 @@ router.get('/', (req, res) => {
 // });
 
 // ROUTE used for /account/create
-router.get('/account/create', (req, res) => {
+router.get("/account/create", (req, res) => {
   //res.status(200).json({ message: 'This is where we will create an account' });
-  res.render('createAccount');
+  res.render("createAccount");
 });
 
 // ROUTE used for login
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   //res.status(200).json({ message: 'This is the login page' });
-  res.render('login');
+  res.render("login");
 });
 
 // ROUTE used for attractions
-router.get('/attractions', (req, res) => {
+router.get("/attractions", (req, res) => {
   //res.status(200).json({ message: 'This is the login page' });
-  res.render('attractions');
+  res.render("attractions");
 });
-
 
 module.exports = router;
