@@ -62,7 +62,7 @@ router.put('/:attraction_id', loggedIn, ownsAttraction, (req, res) =>
   Attraction.update(
   {
     name: req.body.name,
-    lattitude: req.body.lattitude,
+    latitude: req.body.latitude,
     longitude: req.body.longitude,
     category_id: req.body.category_id,
     description: req.body.description,
