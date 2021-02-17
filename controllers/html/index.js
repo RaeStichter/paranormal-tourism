@@ -22,8 +22,8 @@ router.get("/", (req, res) => {
     attributes: [
       "id",
       "name",
-      "latitude",
-      "longitude",
+      "lat",
+      "lng",
       "category_id",
       "description",
       "imagePath",
@@ -88,9 +88,42 @@ router.get("/login", (req, res) => {
 });
 
 // ROUTE used for attractions
-router.get("/attractions", (req, res) => {
-  //res.status(200).json({ message: 'This is the login page' });
-  res.render("attractions");
+router.get("/attractions/:id", (req, res) => {
+  Attraction.findAll({
+    attributes: [
+      "id",
+      "name",
+      "lat",
+      "lng",
+      "category_id",
+      "description",
+      "imagePath",
+      "owner",
+    ],
+    include: [
+      {
+        model: Category,
+        attributes: ["id", "name"],
+      },
+      {
+        model: Type,
+        attributes: ["id", "name"],
+      },
+    ],
+  })
+    .then((dbAttractionData) => {
+      const attractions = dbAttractionData.map((attraction) =>
+        attraction.get({ plain: true })
+      );
+      res.render("attractions", {
+        attractions,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  //res.render('attractions');
 });
 
 module.exports = router;
