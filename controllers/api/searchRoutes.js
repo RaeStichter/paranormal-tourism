@@ -2,6 +2,9 @@
 // ------------
 // express router
 const router = require('express').Router();
+// sequelize connection for rawquery
+const { QueryTypes } = require('sequelize');
+const sequelize = require('../../config/connection');
 // Sequelize models
 const { Attraction } = require('../../models');
 // validSearch middleware
@@ -41,6 +44,7 @@ router.get('/', validSearch, async (req, res) =>
 
 
   // find all attractions where category = category & type = type
+  // TODO: remove console.logs for debugging
   let sResults;
   Attraction.findAll(
   {
@@ -48,7 +52,7 @@ router.get('/', validSearch, async (req, res) =>
     raw: true,
     attributes: [ 'id', 'lat', 'lng' ]
   })
-  .then(attractionResults =>
+  .then(async attractionResults =>
   {
     sResults = attractionResults;
     if (!sResults.length) return res.status(404).json({ message: 'No results found' });
@@ -56,15 +60,30 @@ router.get('/', validSearch, async (req, res) =>
 
     // get distance between user and attractions
     let distances = dist.getDistance(sCoords, sResults);
-
     console.log('sResults w/ distances', distances)
 
     // sort by distance asc
     let sortedResults = distances.sort((a, b) => (a.distance > b.distance) ? 1 : -1);
-
     console.log('sResults sorted by assending distance', sortedResults);
 
-    return res.status(200).end();
+    // get first 20 attractions
+    let firstTwenty = [];
+    for (let x = 0; x < sortedResults.length && x < 20; x++)
+    {
+      let attr = await sequelize.query("SELECT id, name, description FROM attraction WHERE id = ?",
+      {
+        type: QueryTypes.SELECT,
+        replacements: [sortedResults[x].id]
+      });
+
+      attr = { id: attr[0].id, name: attr[0].name, description: attr[0].description, distance: sortedResults[x].distance };
+      firstTwenty.push(attr);
+    }
+
+    console.log('First up to 20 closest attractions matching search', firstTwenty);
+
+    // TODO: return res.status(200).render('results', {firstTwenty})
+    return res.status(200).json(firstTwenty);
   })
   .catch(err =>
   {
