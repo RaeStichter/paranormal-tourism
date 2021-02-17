@@ -1,29 +1,46 @@
 * {
-  background-color: darkgrey;
+  background-color: #a58d80;
 }
 header {
   display: flex;
   justify-content: space-between;
-  background-color: black;
+  background: #0f1418;
 }
 .adventure {
-  font-family: "Arial", "Trebuchet MS", sans-serif;
+  font-family: "Nanum Brush Script", "Arial", "Trebuchet MS", sans-serif;
   font-weight: 500;
   color: white;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 40px;
+  text-align: center;
 }
 .site-name {
   color: white;
-  font-family: "Nanum Brush Script";
+  font-family: "Nanum Brush Script", "Arial", "Trebuchet MS", sans-serif;
+  text-align: left;
+  font-size: 30px;
 }
 .in-out {
   text-align: right;
   margin: 0;
   padding: 10px;
 }
-nav .in-out {
-  background-color: #212121 grey darken-4;
+nav.in-out {
+  background: #0f1418;
+}
+button.btn {
+  background-color: #0f1418;
+  color: white;
+}
+button#logout.btn-no-style {
+  color: #0f1418;
+}
+h2 {
+  font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
+}
+.attractions {
+  font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
+  text-align: center;
 }
 footer {
   background-color: black;
