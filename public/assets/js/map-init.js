@@ -7,7 +7,7 @@ script.async = true;
 // Attach your callback function to the `window` object
 window.initMap = function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 3.8, 
+      zoom: 3.8,
       center: { lat: 39.829169, lng: -98.579908 }, //39.82916983397753, -98.57990885339983 geographic center of USA
       mapTypeId: "roadmap",
 });

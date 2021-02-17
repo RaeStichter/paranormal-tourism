@@ -13,19 +13,18 @@ const ownsComment = require('../../utils/checkOwnsComment.js');
 const uniqid = require('uniqid');
 
 // '/' POST - add a new attraction, verify user level > 0
-// expects { name: 'abc', lattitude: '<lattitude as string>', longitude: '<longitude as string>',
-// category_id: '3', type_ids: '1,2,3', description: 'dasdfkasjfj adjasjd', images: 'imagePath' }
+// expects { name: 'abc', latitude: '<latitude as string>', longitude: '<longitude as string>',
+// category_id: '3', type_ids: '1,2,3', description: 'dasdfkasjfj adjasjd' }
 router.post('/', loggedIn, atLeastLevelOne, (req, res) =>
 {
   Attraction.create(
   {
     id: uniqid(),
     name: req.body.name,
-    lattitude: req.body.lattitude,
+    latitude: req.body.latitude,
     longitude: req.body.longitude,
     category_id: req.body.category_id,
     description: req.body.description,
-    imagePath: req.body.imagePath,
     owner: req.session.user_id
   })
   // redirect client to new attraction page
@@ -55,8 +54,8 @@ router.post('/', loggedIn, atLeastLevelOne, (req, res) =>
 });
 
 // '/:id' - PUT - update attraction with new info, verify owner or admin
-// expects { name: 'abc', lattitude: '<lattitude as string>', longitude: '<longitude as string>',
-// category_id: '3', type_id: '2', description: 'dasdfkasjfj adjasjd', images: 'imagePath' }
+// expects { name: 'abc', latitude: '<latitude as string>', longitude: '<longitude as string>',
+// category_id: '3', type_id: '2', description: 'dasdfkasjfj adjasjd' }
 router.put('/:attraction_id', loggedIn, ownsAttraction, (req, res) =>
 {
   Attraction.update(
@@ -66,7 +65,6 @@ router.put('/:attraction_id', loggedIn, ownsAttraction, (req, res) =>
     longitude: req.body.longitude,
     category_id: req.body.category_id,
     description: req.body.description,
-    imagePath: req.body.imagePath
   },
   {
     where: { id: req.params.attraction_id }
