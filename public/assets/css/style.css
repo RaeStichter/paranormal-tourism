@@ -38,7 +38,7 @@ a {
 .category,
 .type,
 .near {
-  margin-left: 22rem;
+  margin-left: 23rem;
   color: white;
   font-size: 20px;
   font-weight: bolder;
@@ -123,7 +123,7 @@ button.btn /*main page search btn*/ {
 }
 .lgin-email,
 .lgin-password {
-  margin-left: 20rem;
+  margin-left: 22rem;
   font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
   color: white;
 }
