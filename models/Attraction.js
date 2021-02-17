@@ -17,13 +17,13 @@ Attraction.init(
     allowNull: false,
     validate: { len: [1] }
   },
-  latitude:
+  lat:
   {
     type: DataTypes.STRING,
     allowNull: false,
     validate: { len: [9] }
   },
-  longitude:
+  lng:
   {
     type: DataTypes.STRING,
     allowNull: false,

@@ -21,8 +21,8 @@ router.post('/', loggedIn, atLeastLevelOne, (req, res) =>
   {
     id: uniqid(),
     name: req.body.name,
-    latitude: req.body.latitude,
-    longitude: req.body.longitude,
+    lat: req.body.latitude,
+    lng: req.body.longitude,
     category_id: req.body.category_id,
     description: req.body.description,
     owner: req.session.user_id
@@ -61,8 +61,8 @@ router.put('/:attraction_id', loggedIn, ownsAttraction, (req, res) =>
   Attraction.update(
   {
     name: req.body.name,
-    latitude: req.body.latitude,
-    longitude: req.body.longitude,
+    lat: req.body.latitude,
+    lng: req.body.longitude,
     category_id: req.body.category_id,
     description: req.body.description,
   },

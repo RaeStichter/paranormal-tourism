@@ -53,6 +53,7 @@ router.get('/', validSearch, async (req, res) =>
     sResults = attractionResults;
     if (!sResults.length) return res.status(404).json({ message: 'No results found' });
     console.log('sResults', sResults);
+    let from = {[ lat: parseFloat(sCoords.lat), lng: parseFloat(sCoords.lng) ]};
 
     // get distance between user and attractions
     let distances = [];
