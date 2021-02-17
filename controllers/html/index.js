@@ -7,7 +7,7 @@ const { Attraction, Category, Comment, Type, User, Vote } = require('../../model
 // {
 //   res.status(200).json({ message: 'is this working????!' });
 // });
-// HTML routes here // TODO: 
+// HTML routes here // TODO:
 
 // ROUTE used for pulling all attraction data.  Currently displaying
 router.get('/', (req, res) => {
@@ -15,8 +15,8 @@ router.get('/', (req, res) => {
     attributes:[
       'id',
       'name',
-      'latitude',
-      'longitude',
+      'lat',
+      'lng',
       'category_id',
       'description',
       'imagePath',
@@ -44,7 +44,7 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-  
+
 // ROUTE used for pulling all categories
 // router.get('/', (req, res) => {
 //   Category.findAll({
@@ -84,8 +84,8 @@ router.get('/attractions/:id', (req, res) => {
     attributes:[
       'id',
       'name',
-      'latitude',
-      'longitude',
+      'lat',
+      'lng',
       'category_id',
       'description',
       'imagePath',
