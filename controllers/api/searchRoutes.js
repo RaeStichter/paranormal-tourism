@@ -46,24 +46,23 @@ router.get('/', validSearch, async (req, res) =>
   {
     where: { category_id: sCategory }, // TODO: also filter through attractionType
     raw: true,
-    attributes: [ 'id', 'latitude', 'longitude' ]
+    attributes: [ 'id', 'lat', 'lng' ]
   })
   .then(attractionResults =>
   {
     sResults = attractionResults;
     if (!sResults.length) return res.status(404).json({ message: 'No results found' });
     console.log('sResults', sResults);
-    let from = {[ lat: parseFloat(sCoords.lat), lng: parseFloat(sCoords.lng) ]};
 
     // get distance between user and attractions
-    let distances = [];
-    sResults.forEach((res) =>
-    {
-      console.log(res.latitude, res.longitude, sCoords.lat, sCoords.lng);
-      distances.push(dist.getDistance(parseFloat(res.latitude), parseFloat(res.longitude), parseFloat(sCoords.lat), parseFloat(sCoords.lng)));
-    });
+    let distances = dist.getDistance(sCoords, sResults);
 
-    console.log(distances)
+    console.log('sResults w/ distances', distances)
+
+    // sort by distance asc
+    let sortedResults = distances.sort((a, b) => (a.distance > b.distance) ? 1 : -1);
+
+    console.log('sResults sorted by assending distance', sortedResults);
 
     return res.status(200).end();
   })
