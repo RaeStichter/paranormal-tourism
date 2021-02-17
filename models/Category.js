@@ -17,6 +17,13 @@ Category.init(
             validate: {
                 len: [1]
             }
+        },
+        image: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          validate: {
+            len: [1]
+          }
         }
     },
     {

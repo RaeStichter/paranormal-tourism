@@ -9,10 +9,10 @@ const loggedIn = require('../../utils/checkLogin.js');
 const isAdmin = require('../../utils/checkAdmin.js');
 
 // '/' POST - add a new category, check for admin
-// expects { name: 'abc' }
+// expects { name: 'abc', image: './images/ghost.png' }
 router.post('/', loggedIn, isAdmin, (req, res) =>
 {
-  Category.create({ name: req.body.name })
+  Category.create({ name: req.body.name, image: req.body.image })
   .then(dbCategoryData => { res.status(200).json(dbCategoryData); })
   .catch(err =>
   {
@@ -22,10 +22,10 @@ router.post('/', loggedIn, isAdmin, (req, res) =>
 });
 
 // '/:id' PUT - update a category, check for admin
-// expects { name: 'abc' }
+// expects { name: 'abc', image: './images/witch.png' }
 router.put('/:id', loggedIn, isAdmin, (req, res) =>
 {
-  Category.update({ name: req.body.name }, { where: { id: req.params.id }})
+  Category.update({ name: req.body.name, image: req.body.image }, { where: { id: req.params.id }})
   .then(updatedCategoryData => { return res.status(200).json(updatedCategoryData); })
   .catch(err =>
   {
