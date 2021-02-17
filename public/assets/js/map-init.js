@@ -40,8 +40,8 @@ window.initMap = function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       zoom: 7, 
       center: { lat: latitude, lng: longitude }, //39.82916983397753, -98.57990885339983 geographic center of USA
-      mapTypeId: "roadmap",
-});
+      mapTypeId: "roadmap"
+    });
 };
 
 // Append the 'script' element to 'head'
