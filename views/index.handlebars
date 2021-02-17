@@ -4,7 +4,7 @@
 
     <form class="search-attraction-form">
         <div>
-            <label for="attraction-category">Category:</label>
+            <label for="attraction-category" class="category">Category:</label>
             <select name="attraction-category" id="attraction-category">
                 <option value=" "> </option>
                 <option value="Aliens">Aliens</option>
@@ -13,7 +13,7 @@
             </select>
         </div>
         <div>
-            <label for="attraction-type">Type:</label>
+            <label for="attraction-type" class="type">Type:</label>
             <select name="attraction-type" id="attraction-type">
                 <option value=" "> </option>
                 <option value="Museum">Museum</option>
@@ -26,7 +26,7 @@
             </select>
         </div>
         <div>
-            <label for="attraction-location">Near</label>
+            <label for="attraction-location" class="near">Near</label>
             <input type="text" id="attraction-location" name="attraction-location" placeholder="Enter a location..." />
         </div>
         <button type="submit" class="btn">Search</button>
@@ -41,6 +41,7 @@
     <ul class="attraction-list">
         {{#each attractions as |attraction|}}
         <li>
+            <span class="vertical-line"> </span>
             <article class="attraction">
                 <div id="title">
                     <a href="/attractions/{{atraction.id}}">{{attraction.name}}</a>
