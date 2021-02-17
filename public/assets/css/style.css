@@ -62,13 +62,6 @@ div#title {
 .login {
   font-size: 25px;
 }
-
-h4,
-.new-accnt {
-  font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
-  text-align: center;
-  font-size: 20px;
-}
 .attr-opt {
   text-align: center;
 }
@@ -134,6 +127,15 @@ input#email-login,
 input#password-login {
   margin-bottom: 7px;
 }
+h4,
+.new-accnt {
+  font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
+  text-align: center;
+  font-size: 20px;
+}
+.crte-accnt:hover {
+  color: #192928;
+}
 /* -- LOGIN PAGE END -- */
 
 /* -- CREATE ACCOUNT PAGE START -- */
@@ -141,6 +143,9 @@ input#password-login {
   font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
   text-align: center;
   font-size: 1em;
+}
+.create:hover {
+  color: #192928;
 }
 .username,
 .email,
@@ -156,6 +161,9 @@ input#username-signup,
 input#email-signup,
 input#password-signup {
   margin-bottom: 7px;
+}
+.go-in:hover {
+  color: #192928;
 }
 /* -- CREATE ACCOUNT PAGE START END-- */
 
@@ -180,7 +188,7 @@ footer {
 
 /* ---- MEDIA QUERIES ---- */
 
-@media screen and (max-width: 500px) {
+@media screen and (min-width: 200px) {
   .container {
     margin-right: 0;
     margin-left: 0;
@@ -193,20 +201,92 @@ footer {
   }
   button.btn {
     justify-content: center;
+    margin-left: 8rem;
+  }
+  .lgin-email,
+  .lgin-password {
+    margin-left: 3rem;
+    font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
+    color: white;
+  }
+  .lgin-btn {
+    margin-left: 8rem;
+  }
+  .site-name {
+    display: block;
   }
 }
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 500px) {
   .category,
   .type,
   .near {
-    margin-left: 17rem;
-    color: white;
+    text-align: center;
     margin-left: 10rem;
+  }
+  button.btn {
+    justify-content: center;
+    margin-left: 14rem;
+  }
+  .lgin-email,
+  .lgin-password {
+    margin-left: 10rem;
+    font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
+    color: white;
+  }
+  .lgin-btn {
+    margin-left: 15rem;
+  }
+  .site-name {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .category,
+  .type,
+  .near {
+    color: white;
+    margin-left: 17rem;
   }
   button.btn {
     background-color: #0f1418;
     color: white;
     font-size: 15px;
-    margin-left: 15rem;
+    margin-left: 22rem;
+  }
+  .lgin-email,
+  .lgin-password {
+    margin-left: 17rem;
+    font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
+    color: white;
+  }
+  .lgin-btn {
+    margin-left: 22.5rem;
+  }
+  .site-name {
+    display: block;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .category,
+  .type,
+  .near {
+    color: white;
+    margin-left: 25rem;
+  }
+  button.btn {
+    background-color: #0f1418;
+    color: white;
+    font-size: 15px;
+    margin-left: 30rem;
+  }
+  .lgin-email,
+  .lgin-password {
+    margin-left: 25rem;
+    font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
+    color: white;
+  }
+  .lgin-btn {
+    margin-left: 30.5rem;
   }
 }
