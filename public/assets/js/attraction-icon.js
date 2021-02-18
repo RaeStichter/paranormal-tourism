@@ -3,10 +3,10 @@ console.log(type.textContent);
 
 
 image_categories = [
-    {category: 'Alien', imgPath: '/images/alien-for-icon.png'},
+    {category: 'Aliens', imgPath: '/images/alien-for-icon.png'},
     {category: 'Cryptids', imgPath: '/images/bigfoot-for-icon.png'},
     {category: 'Hauntings', imgPath: '/images/ghost-for-icon.png'},
-    {category: 'Witches', imgPath: '/images/witchhat-for-icon.png'}
+    {category: 'Witches', imgPath: '/images/witchIcon.png'}
 ];
 
 console.log(image_categories);

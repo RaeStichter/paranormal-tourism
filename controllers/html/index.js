@@ -1,8 +1,14 @@
-const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const { Attraction, Category, Comment, Type, User, Vote, AttractionType } = require('../../models');
-
-
+const router = require("express").Router();
+const sequelize = require("../../config/connection");
+const {
+  Attraction,
+  Category,
+  Comment,
+  Type,
+  User,
+  Vote,
+  AttractionType,
+} = require("../../models");
 
 // <server>/ - Default URL, should serve index.html // TODO:
 // router.get('', (req, res) =>
@@ -32,9 +38,9 @@ router.get("/", (req, res) => {
         model: Type,
         as: "attraction_types",
         through: AttractionType,
-          attributes: ['id', 'name']
-      }
-    ]
+        attributes: ["id", "name"],
+      },
+    ],
   })
     .then((dbAttractionData) => {
       const attractions = dbAttractionData.map((attraction) =>
@@ -72,7 +78,7 @@ router.get("/", (req, res) => {
 // });
 
 // ROUTE used for attractions
-router.get('/attractions', (req, res) => {
+router.get("/attractions", (req, res) => {
   Attraction.findAll({
     attributes:[
       'id',
@@ -86,23 +92,25 @@ router.get('/attractions', (req, res) => {
     include: [
       {
         model: Category,
-        attributes: ['id', 'name']
+        attributes: ["id", "name"],
       },
       {
         model: Type,
         as: "attraction_types",
         through: AttractionType,
-          attributes: ['id', 'name']
-      }
-    ]
+        attributes: ["id", "name"],
+      },
+    ],
   })
-    .then(dbAttractionData => {
-      const attractions = dbAttractionData.map(attraction => attraction.get({ plain: true}));
-      res.render('attractions', {
-        attractions
+    .then((dbAttractionData) => {
+      const attractions = dbAttractionData.map((attraction) =>
+        attraction.get({ plain: true })
+      );
+      res.render("attractions", {
+        attractions,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -123,10 +131,10 @@ router.get("/login", (req, res) => {
 });
 
 // ROUTE used for attractions
-router.get('/attractions/:id', (req, res) => {
+router.get("/attractions/:id", (req, res) => {
   Attraction.findOne({
     where: {
-      id: req.params.id
+      id: req.params.id,
     },
     attributes:[
       'id',
@@ -139,6 +147,14 @@ router.get('/attractions/:id', (req, res) => {
     ],
     include: [
       {
+        model: Comment,
+        attributes: ["id", "comment_text", "owner", "attraction_id"],
+        include: {
+          model: User,
+          attributes: ["username"]
+        }
+      },
+      {
         model: Category,
         attributes: ["id", "name"],
       },
@@ -146,22 +162,22 @@ router.get('/attractions/:id', (req, res) => {
         model: Type,
         as: "attraction_types",
         through: AttractionType,
-          attributes: ['id', 'name']
-      }
-    ]
+        attributes: ["id", "name"],
+      },
+    ],
   })
-  .then(dbAttractionData => {
-    const attraction = dbAttractionData.get({ plain: true});
-    console.log(attraction);
-    res.render('single-attraction', {
-      attraction
+    .then((dbAttractionData) => {
+      const attraction = dbAttractionData.get({ plain: true });
+      console.log(attraction);
+      res.render("single-attraction", {
+        attraction
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
     });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-//res.render('attractions');
+  //res.render('attractions');
 });
 
 module.exports = router;
