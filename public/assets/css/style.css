@@ -38,7 +38,7 @@ a {
 .category,
 .type,
 .near {
-  margin-left: 35rem;
+  margin-left: 22rem;
   color: white;
   font-size: 20px;
   font-weight: bolder;
@@ -120,6 +120,7 @@ button.btn /*main page search btn*/ {
   margin-left: 22rem;
   font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
   color: white;
+  font-weight: bolder;
 }
 .lgin-btn {
   margin-left: 31.8em;
@@ -153,6 +154,7 @@ h4,
 .password {
   margin-right: 5px;
   color: white;
+  font-weight: bolder;
 }
 
 .sgnup-btn {
@@ -197,7 +199,7 @@ footer {
 
 /* ---- MEDIA QUERIES ---- */
 
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 320px) and (max-width: 500px) {
   .container {
     margin-right: 0;
     margin-left: 0;
@@ -226,57 +228,6 @@ footer {
   }
   .sp-place:hover {
     color: #0f1418;
-    display: block;
-  }
-}
-@media screen and (min-width: 500px) {
-  .category,
-  .type,
-  .near {
-    text-align: center;
-    margin-left: 10rem;
-  }
-  button.btn {
-    justify-content: center;
-    margin-left: 14rem;
-  }
-  .lgin-email,
-  .lgin-password {
-    margin-left: 7rem;
-    font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
-    color: white;
-  }
-  .lgin-btn {
-    margin-left: 15rem;
-  }
-  .site-name {
-    display: block;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  .category,
-  .type,
-  .near {
-    color: white;
-    margin-left: 17rem;
-  }
-  button.btn {
-    background-color: #0f1418;
-    color: white;
-    font-size: 15px;
-    margin-left: 22rem;
-  }
-  .lgin-email,
-  .lgin-password {
-    margin-left: 17rem;
-    font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
-    color: white;
-  }
-  .lgin-btn {
-    margin-left: 22.5rem;
-  }
-  .site-name {
     display: block;
   }
 }

@@ -1,19 +1,26 @@
 <article class="attraction">
     <div>
+        <h1>Attraction Name:</h1>
         <h1>{{attraction.name}}</h1>
     </div>
     <div>
-        {{attraction.category.name}}
+        <h3>Paranormal Category:</h3>
+        <p id="attraction-category">{{attraction.category.name}}</p>
+        <div id="category-image"></div>
     </div>
     <div>
+        <h3>Attraction Type:</h3>
         {{#each attraction.attraction_types}}
-        
-            {{name}}
+            <ul>
+                <li>{{name}}</li>
+            </ul>
         
         {{/each}}
     </div>        
     <div>
+        <h3> Description of Attaction:</h3>
         {{attraction.description}}
     </div>
-
 </article> 
+
+<script src="/js/attraction-icon.js"></script>
