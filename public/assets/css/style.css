@@ -196,6 +196,10 @@ li::marker {
   background-color: #0f1418;
   color: white;
 }
+img {
+  height: 200px;
+  width: 200px;
+}
 /* -- SINGLE ATTRACTIONS PAGE END */
 
 footer {
