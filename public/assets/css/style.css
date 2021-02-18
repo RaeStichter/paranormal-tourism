@@ -81,7 +81,9 @@ div#title {
   font-family: "Nanum Brush Script", "Arial", "Trebuchet MS", sans-serif;
   font-size: 20px;
 }
-
+.btn-no-style {
+  color: #0f1418;
+}
 nav.in-out {
   background: #0f1418;
   padding: 30px;
@@ -98,9 +100,7 @@ label.type,
 label.near {
   font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
 }
-button#logout.btn-no-style {
-  color: #0f1418;
-}
+
 button.btn /*main page search btn*/ {
   background-color: #0f1418;
   color: white;
@@ -193,7 +193,11 @@ li::marker {
 .add-cmnt {
   background-color: #0f1418;
   color: white;
-}
+},
+img {
+  height: 200px;
+  width: 200px;
+},
 /* -- SINGLE ATTRACTIONS PAGE END */
 
 footer {
@@ -260,7 +264,19 @@ footer {
     color: white;
     font-size: 15px;
     margin-left: 26rem;
+  },
+  
+  .lgin-email,
+  .lgin-password {
+    margin-left: 22rem;
+    font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
+    color: white;
+    font-weight: bolder;
   }
+  .lgin-btn {
+    margin-left: 27rem;
+  }
+  
 }
 @media screen and (min-width: 1000px) and (max-width: 1100px) {
   .category,

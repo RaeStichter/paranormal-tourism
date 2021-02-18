@@ -1,6 +1,6 @@
 <section>
 
-    <H1 class="attractions">Attractions</H1>
+    <H1 class="attractions">Results</H1>
 
     {{!-- not working yet --}}
     <div id="map" style="height: 500px"></div>
@@ -10,13 +10,13 @@
         {{#each attractions as |attraction|}}
         <li>
             <article class="attraction">
-                <div class="title">
-                    <a href="/attractions/{{id}}" class="locations">{{name}}</a>
-                </div>
-                <div>
-                    <p id="attraction-lat">{{lat}}</p>
-                    <p id="attraction-lng">{{lng}}</p>
-                </div>
+            <div class="title">
+                <a href="/attractions/{{id}}">{{name}}</a>
+            </div>
+            <div>
+                <p id="attraction-lat">{{lat}}</p>
+                <p id="attraction-lng">{{lng}}</p>
+            </div>
 
             </article>
         </li>

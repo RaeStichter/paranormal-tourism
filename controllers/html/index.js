@@ -47,7 +47,8 @@ router.get("/", (req, res) => {
         attraction.get({ plain: true })
       );
       res.render("index", {
-        attractions, loggedIn: req.session.loggedIn
+        attractions,
+        loggedIn: req.session.loggedIn,
       });
     })
     .catch((err) => {
@@ -107,7 +108,8 @@ router.get("/attractions", (req, res) => {
         attraction.get({ plain: true })
       );
       res.render("attractions", {
-        attractions, loggedIn: req.session.loggedIn
+        attractions,
+        loggedIn: req.session.loggedIn,
       });
     })
     .catch((err) => {
@@ -170,7 +172,8 @@ router.get("/attractions/:id", (req, res) => {
       const attraction = dbAttractionData.get({ plain: true });
       console.log(attraction);
       res.render("single-attraction", {
-        attraction, loggedIn: req.session.loggedIn
+        attraction,
+        loggedIn: req.session.loggedIn,
       });
     })
     .catch((err) => {

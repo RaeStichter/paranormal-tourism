@@ -17,16 +17,6 @@ async function SearchFormHandler(event) {
 
 // this is where the fetch to the sreach api will go===============================================
 document.location.replace('/api/search?location=' + location_text + '&category=' + category_text + '&type=' + type_text);
-
-// const response = await fetch('api/search?location=' + location_text + '&category=' + category_text + '&type=' + type_text).then(function(response) {
-//   if (response.ok) {
-//     response.json().then(function(data) {
-//       console.log(data);
-//     })
-//   }
-// })
-
-  
 }
 
 // function initMap() {
@@ -74,7 +64,7 @@ document.location.replace('/api/search?location=' + location_text + '&category='
     //         'Content-Type': 'application/json'
     //       }
     //     });
-    
+
     //     if (response.ok) {
     //         document.location.replace('/attractions');
     //     } else {
@@ -82,5 +72,5 @@ document.location.replace('/api/search?location=' + location_text + '&category='
     //     }
     // }
 // }
-  
+
 document.querySelector('.search-attraction-form').addEventListener('submit', SearchFormHandler);
