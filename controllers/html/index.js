@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
       "lng",
       "category_id",
       "description",
-      "imagePath",
+      "imagePath", // remove this when push
       "owner",
     ],
     include: [
