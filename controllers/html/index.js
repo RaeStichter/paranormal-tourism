@@ -47,7 +47,7 @@ router.get("/", (req, res) => {
         attraction.get({ plain: true })
       );
       res.render("index", {
-        attractions,
+        attractions, loggedIn: req.session.loggedIn
       });
     })
     .catch((err) => {
@@ -107,7 +107,7 @@ router.get("/attractions", (req, res) => {
         attraction.get({ plain: true })
       );
       res.render("attractions", {
-        attractions,
+        attractions, loggedIn: req.session.loggedIn
       });
     })
     .catch((err) => {
@@ -121,13 +121,13 @@ router.get("/attractions", (req, res) => {
 // ROUTE used for /account/create
 router.get("/account/create", (req, res) => {
   //res.status(200).json({ message: 'This is where we will create an account' });
-  res.render("createAccount");
+  res.render("createAccount", { loggedIn: req.session.loggedIn });
 });
 
 // ROUTE used for login
 router.get("/login", (req, res) => {
   //res.status(200).json({ message: 'This is the login page' });
-  res.render("login");
+  res.render("login", { loggedIn: req.session.loggedIn });
 });
 
 // ROUTE used for attractions
@@ -170,7 +170,7 @@ router.get("/attractions/:id", (req, res) => {
       const attraction = dbAttractionData.get({ plain: true });
       console.log(attraction);
       res.render("single-attraction", {
-        attraction,
+        attraction, loggedIn: req.session.loggedIn
       });
     })
     .catch((err) => {

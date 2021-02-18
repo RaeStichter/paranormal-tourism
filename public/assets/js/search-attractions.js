@@ -16,25 +16,19 @@ async function SearchFormHandler(event) {
 // script.async = true;
 
 // this is where the fetch to the sreach api will go===============================================
+document.location.replace('/api/search?location=' + location_text + '&category=' + category_text + '&type=' + type_text);
 
-  const response = await fetch(`api/search?location=${location_text}&category=${category_text}&type=${type_text}`, {
-    method: 'GET'//,
-    // body: JSON.stringify({
-    //   firstTwenty
-    // }),
-    // headers: {
-    //   'Content-Type': 'application/json'
-    // }
-  });
+// const response = await fetch('api/search?location=' + location_text + '&category=' + category_text + '&type=' + type_text).then(function(response) {
+//   if (response.ok) {
+//     response.json().then(function(data) {
+//       console.log(data);
+//     })
+//   }
+// })
 
-  if (response.ok) {
-    document.location.replace('/attractions');
-    console.log("==========================================");
-    console.log("THIS IS THE RESPONSE FROM API/SEARCH", response);
-  } else {
-    alert(response.statusText);
-  }
+  
 }
+
 // function initMap() {
   // const map = new google.maps.Map(document.getElementById("map"), {
   //   zoom: 8,
