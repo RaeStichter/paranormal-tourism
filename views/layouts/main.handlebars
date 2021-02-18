@@ -21,8 +21,12 @@
         <a href="/" class="site-name">Paranormal Tourism</a>
       </h1>
       <nav class="in-out">
-        <a href="/login">Login</a>
-        <button id="logout" class="btn-no-style">Logout</button>
+        {{#unless loggedIn}}
+          <a href="/login">Login</a>
+        {{/unless}}
+        {{#if loggedIn}}
+          <button id="logout" class="btn-no-style">Logout</button>
+        {{/if}}
       </nav>
     </header>
 

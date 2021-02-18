@@ -6,7 +6,18 @@ class User extends Model
 {
   async checkPassword(pass)
   {
-    let valid = await bcrypt.compare(pass, this.passhash);
+    let valid;
+    try
+    {
+      await bcrypt.compare(pass, this.passhash, (err, res) =>
+      {
+        valid = res;
+      });
+    }
+    catch (err)
+    {
+      console.log(err);
+    }
     return valid;
   }
 }

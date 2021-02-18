@@ -11,16 +11,41 @@
     <div>
         <h3>Attraction Type:</h3>
         {{#each attraction.attraction_types}}
-            <ul>
-                <li>{{name}}</li>
-            </ul>
-        
+        <ul>
+            <li>{{name}}</li>
+        </ul>
+
         {{/each}}
-    </div>        
+    </div>
     <div>
         <h3> Description of Attaction:</h3>
         {{attraction.description}}
     </div>
-</article> 
+
+    <form class="comment-form">
+        <div>
+            <textarea name="comment-body"></textarea>
+        </div>
+
+        <div>
+            <button type="submit" class="add-cmnt">add comment</button>
+        </div>
+    </form>
+
+    <div class="comments">
+        {{#each attraction.comments}}
+        <section class="comment">
+            <div class="meta">
+                {{user.username}}
+            </div>
+            <div class="text">
+                {{comment_text}}
+            </div>
+        </section>
+        {{/each}}
+    </div>
+
+</article>
 
 <script src="/js/attraction-icon.js"></script>
+<script src="/js/comment.js"></script>

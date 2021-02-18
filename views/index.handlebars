@@ -2,13 +2,13 @@
     <h1 id="adventure" class="hero-title">The Paranormal Tourism Database
     </h1>
     <h2>Looking for a goth vacation? Trying to find your will to be weird?</br>
-        Whether you're hunting ghosts, hoping to be abducted, or wishing for a glimpse of Bigfoot, 
+        Whether you're hunting ghosts, hoping to be abducted, or wishing for a glimpse of Bigfoot,
         </br>let us be your resource for all things creepy across the United States.</h2>
     <h2>What kind of paranormal adventure do you seek?</h2>
 
-    <form class="search-attraction-form">
+    <form class="search-attraction-form container">
         <div class="attraction-category">
-            <label for="attraction-category">Category:</label>
+            <label for="attraction-category" class="category">Category:</label>
             <select name="attraction-category" id="attraction-category">
                 <option value=" "> </option>
                 <option value=1>Aliens</option>
@@ -18,7 +18,7 @@
             </select>
         </div>
         <div class="attraction-type">
-            <label for="attraction-type">Type:</label>
+            <label for="attraction-type" class="type">Type:</label>
             <select name="attraction-type" id="attraction-type">
                 <option value=" "> </option>
                 <option value=1>Museum</option>
@@ -31,16 +31,13 @@
             </select>
         </div>
         <div>
-            <label for="attraction-location">Near</label>
-            <input type="text" id="attraction-location" name="attraction-location" placeholder="Enter a location..."/>
+            <label for="attraction-location" class="near">Near</label>
+            <input type="text" id="attraction-location" name="attraction-location" placeholder="Enter a location..." />
 
-            </div>
-            <button type="submit" class="btn">Search</button>
+        </div>
+        <button type="submit" class="btn">Search</button>
         </div>
     </form>
-
-    {{!-- not working yet --}}
-    <div id="map"></div>
 
     <h2>Not sure what to search for? Check out one of these attractions:</h2>
 
@@ -60,8 +57,5 @@
     </ul>
 
 </section>
-
-{{!-- Basic map funcationality, will add more later --}}
-<script src="/js/map-init.js"></script>
 
 <script src="/js/search-attractions.js"></script>
