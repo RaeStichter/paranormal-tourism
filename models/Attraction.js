@@ -39,10 +39,6 @@ Attraction.init(
     type: DataTypes.TEXT,
     allowNull: false
   },
-  imagePath:
-  {
-    type: DataTypes.STRING
-  },
   owner:
   {
     type: DataTypes.STRING,
