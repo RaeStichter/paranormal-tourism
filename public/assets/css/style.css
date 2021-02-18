@@ -38,7 +38,7 @@ a {
 .category,
 .type,
 .near {
-  margin-left: 22rem;
+  margin-left: 33.5rem;
   color: white;
   font-size: 20px;
   font-weight: bolder;
@@ -105,7 +105,7 @@ button.btn /*main page search btn*/ {
   background-color: #0f1418;
   color: white;
   font-size: 15px;
-  margin-left: 26rem;
+  margin-left: 37rem;
   margin-top: 7px;
 }
 /* -- MAIN PAGE END -- */
@@ -184,7 +184,9 @@ input#password-signup {
   font-weight: bolder;
   font-size: 25px;
 }
+
 /* -- SINGLE ATTRACTIONS PAGE END */
+
 footer {
   background-color: #0f1418;
   text-align: center;
@@ -229,6 +231,11 @@ footer {
   .sp-place:hover {
     color: #0f1418;
     display: block;
+  }
+  ul.attraction-list {
+    display: inline-block;
+    margin: 20px 40px 0 5px;
+    font-size: 20px;
   }
 }
 @media screen and (min-width: 1000px) and (max-width: 1100px) {
