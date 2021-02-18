@@ -21,7 +21,6 @@ router.get("/", (req, res) => {
       "lng",
       "category_id",
       "description",
-      "imagePath",
       "owner",
     ],
     include: [
@@ -82,7 +81,6 @@ router.get('/attractions', (req, res) => {
       'lng',
       'category_id',
       'description',
-      'imagePath',
       'owner'
     ],
     include: [
@@ -137,7 +135,6 @@ router.get('/attractions/:id', (req, res) => {
       'lng',
       'category_id',
       'description',
-      'imagePath',
       'owner'
     ],
     include: [
