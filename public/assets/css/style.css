@@ -194,7 +194,7 @@ li::marker {
   background-color: #0f1418;
   color: white;
 }
-,
+
 img {
   height: 200px;
   width: 200px;
@@ -267,8 +267,6 @@ img {
     font-size: 15px;
     margin-left: 26rem;
   }
-
-  ,
   .lgin-email,
   .lgin-password {
     margin-left: 22rem;
