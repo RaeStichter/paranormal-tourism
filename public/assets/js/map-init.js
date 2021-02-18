@@ -1,25 +1,13 @@
+// const { data } = require('./search-attractions');
+// console.log("MAP-INT has been reached!");
+// console.log(data);
 const lat = document.querySelector('#attraction-lat');
 const lng = document.querySelector('#attraction-lng');
 console.log(lat.textContent, lng.textContent);
 
-
-// image_categories = [
-//     {category: 'Aliens', imgPath: '/images/alien-for-icon.png'},
-//     {category: 'Cryptids', imgPath: '/images/bigfoot-for-icon.png'},
-//     {category: 'Hauntings', imgPath: '/images/ghost-for-icon.png'},
-//     {category: 'Witches', imgPath: '/images/witchIcon.png'}
-// ];
-
-// console.log(image_categories);
-
-// const result = image_categories.find( ({category}) => category === type.textContent);
-// console.log(result.imgPath);
-
-
-// var img = document.createElement("img");
-// img.src = result.imgPath;
-// var src = document.getElementById("category-image");
-// src.appendChild(img);
+// Set up arrays for the incoming lat lng data:
+const lat = ['39.82916983397753'];
+const lgn = ['-98.57990885339983'];
 
 
 
@@ -29,12 +17,20 @@ script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDdrgmTD2DFkXNvcS
 script.async = true;
 
 // Attach your callback function to the `window` object
-window.initMap = function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 7, 
-      center: { lat: latitude, lng: longitude }, //39.82916983397753, -98.57990885339983 geographic center of USA
+window.initMap = function initMap(lat,lng) {
+  for (let i = 0; i < lat.length; i++){
+    const latLng = { lat: lat[i], lng: lng[i] };
+    // locate on the map
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 4, 
+      center: latLng,//{ lat: latitude, lng: longitude }, //39.82916983397753, -98.57990885339983 geographic center of USA
       mapTypeId: "roadmap"
     });
+    new google.maps.Marker({
+      position: latLng,
+      map
+    });
+  }
 };
 
 // Append the 'script' element to 'head'

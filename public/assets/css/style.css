@@ -193,11 +193,11 @@ li::marker {
 .add-cmnt {
   background-color: #0f1418;
   color: white;
-}
+},
 img {
   height: 200px;
   width: 200px;
-}
+},
 /* -- SINGLE ATTRACTIONS PAGE END */
 
 footer {
@@ -264,7 +264,8 @@ footer {
     color: white;
     font-size: 15px;
     margin-left: 26rem;
-  }
+  },
+  
   .lgin-email,
   .lgin-password {
     margin-left: 22rem;
@@ -275,6 +276,7 @@ footer {
   .lgin-btn {
     margin-left: 27rem;
   }
+  
 }
 @media screen and (min-width: 1000px) and (max-width: 1100px) {
   .category,
