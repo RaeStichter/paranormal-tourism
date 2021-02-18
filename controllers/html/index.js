@@ -80,6 +80,7 @@ router.get("/", (req, res) => {
 // ROUTE used for attractions
 router.get("/attractions", (req, res) => {
   Attraction.findAll({
+<<<<<<< HEAD
     attributes: [
       "id",
       "name",
@@ -88,6 +89,16 @@ router.get("/attractions", (req, res) => {
       "category_id",
       "description",
       "owner",
+=======
+    attributes:[
+      'id',
+      'name',
+      'lat',
+      'lng',
+      'category_id',
+      'description',
+      'owner'
+>>>>>>> 5f824037bac408e61b50566b1ead2cc46102a81a
     ],
     include: [
       {
@@ -136,6 +147,7 @@ router.get("/attractions/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+<<<<<<< HEAD
     attributes: [
       "id",
       "name",
@@ -144,8 +156,26 @@ router.get("/attractions/:id", (req, res) => {
       "category_id",
       "description",
       "owner",
+=======
+    attributes:[
+      'id',
+      'name',
+      'lat',
+      'lng',
+      'category_id',
+      'description',
+      'owner'
+>>>>>>> 5f824037bac408e61b50566b1ead2cc46102a81a
     ],
     include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "owner", "attraction_id"],
+        include: {
+          model: User,
+          attributes: ["username"]
+        }
+      },
       {
         model: Category,
         attributes: ["id", "name"],
@@ -162,7 +192,7 @@ router.get("/attractions/:id", (req, res) => {
       const attraction = dbAttractionData.get({ plain: true });
       console.log(attraction);
       res.render("single-attraction", {
-        attraction,
+        attraction
       });
     })
     .catch((err) => {

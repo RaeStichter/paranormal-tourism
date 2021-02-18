@@ -21,6 +21,31 @@
         <h3> Description of Attaction:</h3>
         {{attraction.description}}
     </div>
+    
+    <form class="comment-form">
+        <div>
+            <textarea name="comment-body"></textarea>
+        </div>
+
+        <div>
+            <button type="submit">add comment</button>
+        </div>
+    </form>
+
+    <div class="comments">
+        {{#each attraction.comments}}
+        <section class="comment">
+            <div class="meta">
+                {{user.username}}
+            </div>
+            <div class="text">
+                {{comment_text}}
+            </div>
+        </section>
+        {{/each}}
+    </div>
+
 </article> 
 
 <script src="/js/attraction-icon.js"></script>
+<script src="/js/comment.js"></script>
