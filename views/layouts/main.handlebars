@@ -22,10 +22,10 @@
       </h1>
       <nav class="in-out">
         {{#unless loggedIn}}
-          <a href="/login">Login</a>
+        <a href="/login">Login</a>
         {{/unless}}
         {{#if loggedIn}}
-          <button id="logout" class="btn-no-style">Logout</button>
+        <button id="logout" class="btn-no-style">Logout</button>
         {{/if}}
       </nav>
     </header>
@@ -33,7 +33,7 @@
     <main>
       {{{ body }}}
     </main>
-    <footer>
+    <footer class="foot">
       Thanks for visiting!
     </footer>
   </div>
