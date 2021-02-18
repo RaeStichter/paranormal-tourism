@@ -1,13 +1,8 @@
-const router = require("express").Router();
-const sequelize = require("../../config/connection");
-const {
-  Attraction,
-  Category,
-  Comment,
-  Type,
-  User,
-  Vote,
-} = require("../../models");
+const router = require('express').Router();
+const sequelize = require('../../config/connection');
+const { Attraction, Category, Comment, Type, User, Vote, AttractionType } = require('../../models');
+
+
 
 // <server>/ - Default URL, should serve index.html // TODO:
 // router.get('', (req, res) =>
@@ -36,9 +31,11 @@ router.get("/", (req, res) => {
       },
       {
         model: Type,
-        attributes: ["id", "name"],
-      },
-    ],
+        as: "attraction_types",
+        through: AttractionType,
+          attributes: ['id', 'name']
+      }
+    ]
   })
     .then((dbAttractionData) => {
       const attractions = dbAttractionData.map((attraction) =>
@@ -75,6 +72,46 @@ router.get("/", (req, res) => {
 //     });
 // });
 
+// ROUTE used for attractions
+router.get('/attractions', (req, res) => {
+  Attraction.findAll({
+    attributes:[
+      'id',
+      'name',
+      'lat',
+      'lng',
+      'category_id',
+      'description',
+      'imagePath',
+      'owner'
+    ],
+    include: [
+      {
+        model: Category,
+        attributes: ['id', 'name']
+      },
+      {
+        model: Type,
+        as: "attraction_types",
+        through: AttractionType,
+          attributes: ['id', 'name']
+      }
+    ]
+  })
+    .then(dbAttractionData => {
+      const attractions = dbAttractionData.map(attraction => attraction.get({ plain: true}));
+      res.render('attractions', {
+        attractions
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+  //res.status(200).json({ message: 'This is where we will create an account' });
+  //res.render('attractions');
+});
+
 // ROUTE used for /account/create
 router.get("/account/create", (req, res) => {
   //res.status(200).json({ message: 'This is where we will create an account' });
@@ -88,17 +125,20 @@ router.get("/login", (req, res) => {
 });
 
 // ROUTE used for attractions
-router.get("/attractions/:id", (req, res) => {
-  Attraction.findAll({
-    attributes: [
-      "id",
-      "name",
-      "lat",
-      "lng",
-      "category_id",
-      "description",
-      "imagePath",
-      "owner",
+router.get('/attractions/:id', (req, res) => {
+  Attraction.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes:[
+      'id',
+      'name',
+      'lat',
+      'lng',
+      'category_id',
+      'description',
+      'imagePath',
+      'owner'
     ],
     include: [
       {
@@ -107,23 +147,24 @@ router.get("/attractions/:id", (req, res) => {
       },
       {
         model: Type,
-        attributes: ["id", "name"],
-      },
-    ],
+        as: "attraction_types",
+        through: AttractionType,
+          attributes: ['id', 'name']
+      }
+    ]
   })
-    .then((dbAttractionData) => {
-      const attractions = dbAttractionData.map((attraction) =>
-        attraction.get({ plain: true })
-      );
-      res.render("attractions", {
-        attractions,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
+  .then(dbAttractionData => {
+    const attraction = dbAttractionData.get({ plain: true});
+    console.log(attraction);
+    res.render('single-attraction', {
+      attraction
     });
-  //res.render('attractions');
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+//res.render('attractions');
 });
 
 module.exports = router;
