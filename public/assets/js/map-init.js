@@ -1,33 +1,26 @@
-// get the lat and long
-const loc = window.location.toString().split('/')[
-  window.location.toString().split('/').length - 1
-];
+const lat = document.querySelector('#attraction-lat');
+const lng = document.querySelector('#attraction-lng');
+console.log(lat.textContent, lng.textContent);
 
-const lat = loc.toString().split(',') [
-  loc.toString().split(',').length - 2
-];
 
-const lng = loc.toString().split(',') [
-  loc.toString().split(',').length - 1
-];
-
-var latitude = parseFloat(lat);
-var longitude = parseFloat(lng);
-// const loct = window.location.toString().split(',')[
-//   window.location.toString().split(',').length - 2
+// image_categories = [
+//     {category: 'Aliens', imgPath: '/images/alien-for-icon.png'},
+//     {category: 'Cryptids', imgPath: '/images/bigfoot-for-icon.png'},
+//     {category: 'Hauntings', imgPath: '/images/ghost-for-icon.png'},
+//     {category: 'Witches', imgPath: '/images/witchIcon.png'}
 // ];
 
-// const lat = loc.toString().split(',')[
-//   loc.toString().split(',').length - 1
-// ];
-console.log(loc);
-console.log(latitude);
-console.log(longitude);
-// console.log(latitude);
-// console.log(longitude);
-// console.log(lat);
-// Create the script tag, set the appropriate attributes
-//function attractionMap(latitude, longitude) {
+// console.log(image_categories);
+
+// const result = image_categories.find( ({category}) => category === type.textContent);
+// console.log(result.imgPath);
+
+
+// var img = document.createElement("img");
+// img.src = result.imgPath;
+// var src = document.getElementById("category-image");
+// src.appendChild(img);
+
 
 
 var script = document.createElement('script');
