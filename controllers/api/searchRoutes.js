@@ -76,14 +76,15 @@ router.get('/', validSearch, async (req, res) =>
         replacements: [sortedResults[x].id]
       });
 
-      attr = { id: attr[0].id, name: attr[0].name, description: attr[0].description, distance: sortedResults[x].distance };
+      attr = { id: attr[0].id, name: attr[0].name, description: attr[0].description, lat: sortedResults[x].lat, lng: sortedResults[x].lng, distance: sortedResults[x].distance };
       firstTwenty.push(attr);
     }
 
     console.log('First up to 20 closest attractions matching search', firstTwenty);
 
     // TODO: return res.status(200).render('results', {firstTwenty})
-    return res.status(200).json(firstTwenty);
+    //return res.status(200).json(firstTwenty);
+    return res.status(200).render('attractions', { attractions: firstTwenty, loggedIn: req.session.loggedIn });
   })
   .catch(err =>
   {
