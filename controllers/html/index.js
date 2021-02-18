@@ -80,7 +80,6 @@ router.get("/", (req, res) => {
 // ROUTE used for attractions
 router.get("/attractions", (req, res) => {
   Attraction.findAll({
-<<<<<<< HEAD
     attributes: [
       "id",
       "name",
@@ -89,16 +88,6 @@ router.get("/attractions", (req, res) => {
       "category_id",
       "description",
       "owner",
-=======
-    attributes:[
-      'id',
-      'name',
-      'lat',
-      'lng',
-      'category_id',
-      'description',
-      'owner'
->>>>>>> 82c8f3c894c72f207f1436080faa52b7cf589932
     ],
     include: [
       {
@@ -147,7 +136,6 @@ router.get("/attractions/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-<<<<<<< HEAD
     attributes: [
       "id",
       "name",
@@ -156,16 +144,6 @@ router.get("/attractions/:id", (req, res) => {
       "category_id",
       "description",
       "owner",
-=======
-    attributes:[
-      'id',
-      'name',
-      'lat',
-      'lng',
-      'category_id',
-      'description',
-      'owner'
->>>>>>> 82c8f3c894c72f207f1436080faa52b7cf589932
     ],
     include: [
       {
