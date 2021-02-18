@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paranormal Tourism</title>
-    {{!-- <link rel="stylesheet" href="/public/assets/css/style.css"> --}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Truculenta:wght@100&display=swap" rel="stylesheet">
+  <title>Paranormal Tourism</title>
+  <link rel="shortcut icon" type="image/png" href="/images/favicon-32x32.png" />
+  <link rel="stylesheet" href="/css/style.css">
 </head>
+
+
 <body>
   <div class="wrapper">
     <header>
       <h1>
-        <a href="/">Paranormal Tourism</a>
+        <a href="/" class="site-name">Paranormal Tourism</a>
       </h1>
-      <nav>
-          <a href="/login">Login</a>
-          <button id="logout" class="btn-no-style">logout</button>
+      <nav class="in-out">
+        <a href="/login">Login</a>
+        <button id="logout" class="btn-no-style">Logout</button>
       </nav>
     </header>
+
     <main>
       {{{ body }}}
     </main>
@@ -27,4 +36,5 @@
 
 </body>
 <script src="/js/logout.js"></script>
+
 </html>

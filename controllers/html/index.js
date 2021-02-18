@@ -2,6 +2,8 @@ const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Attraction, Category, Comment, Type, User, Vote, AttractionType } = require('../../models');
 
+
+
 // <server>/ - Default URL, should serve index.html // TODO:
 // router.get('', (req, res) =>
 // {
@@ -10,22 +12,22 @@ const { Attraction, Category, Comment, Type, User, Vote, AttractionType } = requ
 // HTML routes here // TODO:
 
 // ROUTE used for pulling all attraction data.  Currently displaying
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   Attraction.findAll({
-    attributes:[
-      'id',
-      'name',
-      'lat',
-      'lng',
-      'category_id',
-      'description',
-      'imagePath',
-      'owner'
+    attributes: [
+      "id",
+      "name",
+      "lat",
+      "lng",
+      "category_id",
+      "description",
+      "imagePath",
+      "owner",
     ],
     include: [
       {
         model: Category,
-        attributes: ['id', 'name']
+        attributes: ["id", "name"],
       },
       {
         model: Type,
@@ -35,13 +37,15 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbAttractionData => {
-      const attractions = dbAttractionData.map(attraction => attraction.get({ plain: true}));
-      res.render('index', {
-        attractions
+    .then((dbAttractionData) => {
+      const attractions = dbAttractionData.map((attraction) =>
+        attraction.get({ plain: true })
+      );
+      res.render("index", {
+        attractions,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -109,15 +113,15 @@ router.get('/attractions', (req, res) => {
 });
 
 // ROUTE used for /account/create
-router.get('/account/create', (req, res) => {
+router.get("/account/create", (req, res) => {
   //res.status(200).json({ message: 'This is where we will create an account' });
-  res.render('createAccount');
+  res.render("createAccount");
 });
 
 // ROUTE used for login
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   //res.status(200).json({ message: 'This is the login page' });
-  res.render('login');
+  res.render("login");
 });
 
 // ROUTE used for attractions
@@ -139,7 +143,7 @@ router.get('/attractions/:id', (req, res) => {
     include: [
       {
         model: Category,
-        attributes: ['id', 'name']
+        attributes: ["id", "name"],
       },
       {
         model: Type,
@@ -162,6 +166,5 @@ router.get('/attractions/:id', (req, res) => {
   });
 //res.render('attractions');
 });
-
 
 module.exports = router;

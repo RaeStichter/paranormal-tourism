@@ -1,10 +1,11 @@
 <section>
-    <H1>All Attractions</H1>
-    {{Attraction.lat}}
-    {{sResults.id}}
-    
-    <div>
-            {{!-- Pull attractions --}}
+
+    <H1 class="attractions">All Attractions</H1>
+
+    {{!-- not working yet --}}
+    <div id="map" style="height: 500px"></div>
+
+    {{!-- Pull attractions --}}
     <ul class="attraction-list">
         {{#each attractions as |attraction|}}
         <li>
@@ -12,6 +13,7 @@
             <div class="title">
                 <a href="/attractions/{{id}}">{{name}}</a>
             </div>
+
             </article>
         </li>
         {{/each}}
