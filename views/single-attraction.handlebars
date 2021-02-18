@@ -6,29 +6,29 @@
     <div>
         <h3>Paranormal Category:</h3>
         <p id="attraction-category">{{attraction.category.name}}</p>
-        <div id="category-image"></div>
+        <div id="category-image" class="cat-img"></div>
     </div>
     <div>
         <h3>Attraction Type:</h3>
         {{#each attraction.attraction_types}}
-            <ul>
-                <li>{{name}}</li>
-            </ul>
-        
+        <ul>
+            <li>{{name}}</li>
+        </ul>
+
         {{/each}}
-    </div>        
+    </div>
     <div>
         <h3> Description of Attaction:</h3>
         {{attraction.description}}
     </div>
-    
+
     <form class="comment-form">
         <div>
             <textarea name="comment-body"></textarea>
         </div>
 
         <div>
-            <button type="submit">add comment</button>
+            <button type="submit" class="add-cmnt">add comment</button>
         </div>
     </form>
 
@@ -45,7 +45,7 @@
         {{/each}}
     </div>
 
-</article> 
+</article>
 
 <script src="/js/attraction-icon.js"></script>
 <script src="/js/comment.js"></script>

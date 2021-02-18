@@ -47,7 +47,8 @@ router.get("/", (req, res) => {
         attraction.get({ plain: true })
       );
       res.render("index", {
-        attractions, loggedIn: req.session.loggedIn
+        attractions,
+        loggedIn: req.session.loggedIn,
       });
     })
     .catch((err) => {
@@ -80,14 +81,14 @@ router.get("/", (req, res) => {
 // ROUTE used for attractions
 router.get("/attractions", (req, res) => {
   Attraction.findAll({
-    attributes:[
-      'id',
-      'name',
-      'lat',
-      'lng',
-      'category_id',
-      'description',
-      'owner'
+    attributes: [
+      "id",
+      "name",
+      "lat",
+      "lng",
+      "category_id",
+      "description",
+      "owner",
     ],
     include: [
       {
@@ -107,7 +108,8 @@ router.get("/attractions", (req, res) => {
         attraction.get({ plain: true })
       );
       res.render("attractions", {
-        attractions, loggedIn: req.session.loggedIn
+        attractions,
+        loggedIn: req.session.loggedIn,
       });
     })
     .catch((err) => {
@@ -136,14 +138,14 @@ router.get("/attractions/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes:[
-      'id',
-      'name',
-      'lat',
-      'lng',
-      'category_id',
-      'description',
-      'owner'
+    attributes: [
+      "id",
+      "name",
+      "lat",
+      "lng",
+      "category_id",
+      "description",
+      "owner",
     ],
     include: [
       {
@@ -151,8 +153,8 @@ router.get("/attractions/:id", (req, res) => {
         attributes: ["id", "comment_text", "owner", "attraction_id"],
         include: {
           model: User,
-          attributes: ["username"]
-        }
+          attributes: ["username"],
+        },
       },
       {
         model: Category,
@@ -170,7 +172,8 @@ router.get("/attractions/:id", (req, res) => {
       const attraction = dbAttractionData.get({ plain: true });
       console.log(attraction);
       res.render("single-attraction", {
-        attraction, loggedIn: req.session.loggedIn
+        attraction,
+        loggedIn: req.session.loggedIn,
       });
     })
     .catch((err) => {

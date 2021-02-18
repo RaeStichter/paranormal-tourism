@@ -38,7 +38,7 @@ a {
 .category,
 .type,
 .near {
-  margin-left: 22rem;
+  margin-left: 33.5rem;
   color: white;
   font-size: 20px;
   font-weight: bolder;
@@ -81,7 +81,9 @@ div#title {
   font-family: "Nanum Brush Script", "Arial", "Trebuchet MS", sans-serif;
   font-size: 20px;
 }
-
+.btn-no-style {
+  color: #0f1418;
+}
 nav.in-out {
   background: #0f1418;
   padding: 30px;
@@ -98,14 +100,12 @@ label.type,
 label.near {
   font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
 }
-button#logout.btn-no-style {
-  color: #0f1418;
-}
+
 button.btn /*main page search btn*/ {
   background-color: #0f1418;
   color: white;
   font-size: 15px;
-  margin-left: 26rem;
+  margin-left: 37rem;
   margin-top: 7px;
 }
 /* -- MAIN PAGE END -- */
@@ -117,13 +117,13 @@ button.btn /*main page search btn*/ {
 }
 .lgin-email,
 .lgin-password {
-  margin-left: 22rem;
+  margin-left: 34rem;
   font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
   color: white;
   font-weight: bolder;
 }
 .lgin-btn {
-  margin-left: 31.8em;
+  margin-left: 45.8em;
 }
 input#email-login,
 input#password-login {
@@ -175,6 +175,9 @@ input#password-signup {
   font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
   text-align: center;
 }
+.locations:hover {
+  color: #192928;
+}
 /* -- ATTRACTIONS PAGE END -- */
 
 /* -- SINGLE ATTRACTIONS PAGE START */
@@ -184,7 +187,19 @@ input#password-signup {
   font-weight: bolder;
   font-size: 25px;
 }
+li::marker {
+  color: #a58d80;
+}
+.add-cmnt {
+  background-color: #0f1418;
+  color: white;
+}
+img {
+  height: 200px;
+  width: 200px;
+}
 /* -- SINGLE ATTRACTIONS PAGE END */
+
 footer {
   background-color: #0f1418;
   text-align: center;
@@ -229,6 +244,36 @@ footer {
   .sp-place:hover {
     color: #0f1418;
     display: block;
+  }
+  ul.attraction-list {
+    display: inline-block;
+    margin: 20px 40px 0 5px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 623px) and (max-width: 909px) {
+  .category,
+  .type,
+  .near {
+    color: white;
+    margin-left: 22rem;
+  }
+  button.btn {
+    background-color: #0f1418;
+    color: white;
+    font-size: 15px;
+    margin-left: 26rem;
+  }
+  .lgin-email,
+  .lgin-password {
+    margin-left: 22rem;
+    font-family: "Truculenta", "Arial", "Trebuchet MS", sans-serif;
+    color: white;
+    font-weight: bolder;
+  }
+  .lgin-btn {
+    margin-left: 27rem;
   }
 }
 @media screen and (min-width: 1000px) and (max-width: 1100px) {
