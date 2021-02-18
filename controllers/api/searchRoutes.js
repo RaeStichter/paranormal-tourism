@@ -84,7 +84,7 @@ router.get('/', validSearch, async (req, res) =>
 
     // TODO: return res.status(200).render('results', {firstTwenty})
     //return res.status(200).json(firstTwenty);
-    return res.status(200).render('attractions', { attractions: firstTwenty, loggedIn: req.session.loggedIn });
+    return res.status(200).render('results', { attractions: firstTwenty, loggedIn: req.session.loggedIn });
   })
   .catch(err =>
   {
