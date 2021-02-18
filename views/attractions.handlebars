@@ -1,5 +1,6 @@
 <section>
-    <H1>All Attractions</H1>
+
+    <H1 class="attractions">All Attractions</H1>
 
     {{!-- not working yet --}}
     <div id="map" style="height: 500px"></div>
@@ -10,12 +11,23 @@
         <li>
             <article class="attraction">
             <div class="title">
-                <a href="/attractions/{{atraction.id}}">{{attraction.name}}</a>
+                <a href="/attractions/{{id}}">{{name}}</a>
             </div>
+            <div>
+                {{lat}}
+            </div>
+
             </article>
         </li>
         {{/each}}
     </ul>
+    </div>
+
+
+    {{!-- not working yet --}}
+    {{!-- <div id="map" style="height: 500px"></div> --}}
+
 </section>
 
-<script src="/js/map-init.js"></script>
+{{!-- <script src="/js/search-attractions.js"></script> --}}
+{{!-- <script src="/js/map-init.js"></script> --}}

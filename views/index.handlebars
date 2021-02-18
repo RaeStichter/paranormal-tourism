@@ -1,40 +1,47 @@
 <section>
-    <h1>Find your next adventure!</h1>
-    <h2>What are you looking to do?</h2>
+    <h1 id="adventure" class="hero-title">The Paranormal Tourism Database
+    </h1>
+    <h2>Looking for a goth vacation? Trying to find your will to be weird?</br>
+        Whether you're hunting ghosts, hoping to be abducted, or wishing for a glimpse of Bigfoot, 
+        </br>let us be your resource for all things creepy across the United States.</h2>
+    <h2>What kind of paranormal adventure do you seek?</h2>
 
     <form class="search-attraction-form">
-        <div>
+        <div class="attraction-category">
             <label for="attraction-category">Category:</label>
             <select name="attraction-category" id="attraction-category">
                 <option value=" "> </option>
-                <option value="Aliens">Aliens</option>
-                <option value="Cryptids">Cryptids</option>
-                <option value="Ghosts">Ghosts</option>
+                <option value=1>Aliens</option>
+                <option value=2>Cryptids</option>
+                <option value=3>Hauntings</option>
+                <option value=4>Witches</option>
             </select>
         </div>
-        <div>
+        <div class="attraction-type">
             <label for="attraction-type">Type:</label>
             <select name="attraction-type" id="attraction-type">
                 <option value=" "> </option>
-                <option value="Museum">Museum</option>
-                <option value="Cemetary">Cemetary</option>
-                <option value="Historical Site">Historical Site</option>
-                <option value="Sighting Location">Sighting Location</option>
-                <option value="Asylum">Asylum</option>
-                <option value="Prison">Prison</option>
-                <option value="Walking Tour">Walking Tour</option>
+                <option value=1>Museum</option>
+                <option value=2>Cemetary</option>
+                <option value=3>Historical Site</option>
+                <option value=4>Sighting Location</option>
+                <option value=5>Asylum</option>
+                <option value=6>Prison</option>
+                <option value=7>Walking Tour</option>
             </select>
         </div>
         <div>
             <label for="attraction-location">Near</label>
             <input type="text" id="attraction-location" name="attraction-location" placeholder="Enter a location..."/>
+
+            </div>
+            <button type="submit" class="btn">Search</button>
         </div>
-        <button type="submit" class="btn">Search</button>
     </form>
 
     {{!-- not working yet --}}
     <div id="map"></div>
-    
+
     <h2>Not sure what to search for? Check out one of these attractions:</h2>
 
     {{!-- Pull attractions --}}
@@ -42,9 +49,11 @@
         {{#each attractions as |attraction|}}
         <li>
             <article class="attraction">
-            <div class="title">
-                <a href="/attractions/{{atraction.id}}">{{attraction.name}}</a>
-            </div>
+
+                <span class="vertical-line"> </span>
+                <div id="title">
+                    <a href="/attractions/{{id}}" class="sp-place">{{name}}</a>
+                </div>
             </article>
         </li>
         {{/each}}
@@ -55,5 +64,4 @@
 {{!-- Basic map funcationality, will add more later --}}
 <script src="/js/map-init.js"></script>
 
-{{!-- Search not working yet --}}
 <script src="/js/search-attractions.js"></script>
