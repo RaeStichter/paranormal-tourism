@@ -4,16 +4,19 @@
     </div>
     <div>
         {{attraction.category.name}}
+        <p id="attraction-category">Hauntings</p>
+        <div id="category-image"></div>
     </div>
     <div>
         {{#each attraction.attraction_types}}
         
-            {{name}}
+            <p>{{name}}</p>
         
         {{/each}}
     </div>        
     <div>
         {{attraction.description}}
     </div>
-
 </article> 
+
+<script src="/js/attraction-icon.js"></script>
