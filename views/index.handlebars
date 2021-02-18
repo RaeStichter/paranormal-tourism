@@ -3,26 +3,27 @@
     <h2>What are you looking to do?</h2>
 
     <form class="search-attraction-form">
-        <div>
+        <div class="attraction-category">
             <label for="attraction-category">Category:</label>
             <select name="attraction-category" id="attraction-category">
                 <option value=" "> </option>
-                <option value="Aliens">Aliens</option>
-                <option value="Cryptids">Cryptids</option>
-                <option value="Ghosts">Ghosts</option>
+                <option value=1>Aliens</option>
+                <option value=2>Cryptids</option>
+                <option value=3>Hauntings</option>
+                <option value=4>Witches</option>
             </select>
         </div>
-        <div>
+        <div class="attraction-type">
             <label for="attraction-type">Type:</label>
             <select name="attraction-type" id="attraction-type">
                 <option value=" "> </option>
-                <option value="Museum">Museum</option>
-                <option value="Cemetary">Cemetary</option>
-                <option value="Historical Site">Historical Site</option>
-                <option value="Sighting Location">Sighting Location</option>
-                <option value="Asylum">Asylum</option>
-                <option value="Prison">Prison</option>
-                <option value="Walking Tour">Walking Tour</option>
+                <option value=1>Museum</option>
+                <option value=2>Cemetary</option>
+                <option value=3>Historical Site</option>
+                <option value=4>Sighting Location</option>
+                <option value=5>Asylum</option>
+                <option value=6>Prison</option>
+                <option value=7>Walking Tour</option>
             </select>
         </div>
         <div>
@@ -43,7 +44,7 @@
         <li>
             <article class="attraction">
             <div class="title">
-                <a href="/attractions/{{atraction.id}}">{{attraction.name}}</a>
+                <a href="/attractions/{{id}}">{{name}}</a>
             </div>
             </article>
         </li>
