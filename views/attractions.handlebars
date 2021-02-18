@@ -14,7 +14,8 @@
                 <a href="/attractions/{{id}}">{{name}}</a>
             </div>
             <div>
-                {{lat}}
+                <p id="attraction-lat">{{lat}}</p>
+                <p id="attraction-lng">{{lng}}</p>
             </div>
 
             </article>
@@ -23,11 +24,7 @@
     </ul>
     </div>
 
-
-    {{!-- not working yet --}}
-    {{!-- <div id="map" style="height: 500px"></div> --}}
-
 </section>
 
-{{!-- <script src="/js/search-attractions.js"></script> --}}
-{{!-- <script src="/js/map-init.js"></script> --}}
+<script src="/js/search-attractions.js"></script>
+<script src="/js/map-init.js"></script>

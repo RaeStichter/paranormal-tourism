@@ -29,7 +29,8 @@ async function SearchFormHandler(event) {
 
   if (response.ok) {
     document.location.replace('/attractions');
-    console.log(response);
+    console.log("==========================================");
+    console.log("THIS IS THE RESPONSE FROM API/SEARCH", response);
   } else {
     alert(response.statusText);
   }
